@@ -1,0 +1,311 @@
+{
+  "version": "1.0.0",
+  "description": "Yii2 Tabler Widgets 结构化索引",
+  "widgets": {
+    "components": [
+      {
+        "name": "Alert",
+        "class": "bestyii\\tabler\\Alert",
+        "file": "components/alert.md",
+        "title": "Alert 警告",
+        "description": "警告组件用于向用户显示重要消息和反馈",
+        "properties": [
+          {"name": "type", "type": "string", "default": "info", "enum": ["success", "warning", "danger", "info"], "description": "类型"},
+          {"name": "title", "type": "string", "description": "标题"},
+          {"name": "body", "type": "string", "description": "内容"},
+          {"name": "icon", "type": "string", "description": "图标名称"},
+          {"name": "isImportant", "type": "bool", "default": false, "description": "重要警告"},
+          {"name": "isDismissible", "type": "bool", "default": true, "description": "可关闭"}
+        ]
+      },
+      {
+        "name": "Accordion",
+        "class": "bestyii\\tabler\\Accordion",
+        "file": "components/accordion.md",
+        "title": "Accordion 手风琴",
+        "description": "可折叠的内容面板"
+      },
+      {
+        "name": "Avatar",
+        "class": "bestyii\\tabler\\Avatar",
+        "file": "components/avatar.md",
+        "title": "Avatar 头像",
+        "description": "用户头像显示"
+      },
+      {
+        "name": "AvatarList",
+        "class": "bestyii\\tabler\\AvatarList",
+        "file": "components/avatar-list.md",
+        "title": "AvatarList 头像列表",
+        "description": "头像堆叠列表"
+      },
+      {
+        "name": "Badge",
+        "class": "bestyii\\tabler\\Badge",
+        "file": "components/badge.md",
+        "title": "Badge 徽章",
+        "description": "徽章组件用于标签、状态指示和计数显示"
+      },
+      {
+        "name": "Breadcrumbs",
+        "class": "bestyii\\tabler\\Breadcrumbs",
+        "file": "components/breadcrumbs.md",
+        "title": "Breadcrumbs 面包屑",
+        "description": "页面导航路径"
+      },
+      {
+        "name": "Button",
+        "class": "bestyii\\tabler\\Button",
+        "file": "components/button.md",
+        "title": "Button 按钮",
+        "description": "按钮组件用于触发操作和提交表单"
+      },
+      {
+        "name": "Card",
+        "class": "bestyii\\tabler\\Card",
+        "file": "components/card.md",
+        "title": "Card 卡片",
+        "description": "卡片是灵活的容器组件，用于组织和展示内容",
+        "isContainer": true
+      },
+      {
+        "name": "Carousel",
+        "class": "bestyii\\tabler\\Carousel",
+        "file": "components/carousel.md",
+        "title": "Carousel 轮播图",
+        "description": "可滑动的内容展示"
+      },
+      {
+        "name": "Datagrid",
+        "class": "bestyii\\tabler\\Datagrid",
+        "file": "components/datagrid.md",
+        "title": "Datagrid 数据网格",
+        "description": "键值对形式展示数据"
+      },
+      {
+        "name": "Divider",
+        "class": "bestyii\\tabler\\Divider",
+        "file": "components/divider.md",
+        "title": "Divider 分隔线",
+        "description": "内容分隔线"
+      },
+      {
+        "name": "DividedList",
+        "class": "bestyii\\tabler\\DividedList",
+        "file": "components/divided-list.md",
+        "title": "DividedList 分隔列表",
+        "description": "带分隔线的列表"
+      },
+      {
+        "name": "Dropdown",
+        "class": "bestyii\\tabler\\Dropdown",
+        "file": "components/dropdown.md",
+        "title": "Dropdown 下拉菜单",
+        "description": "下拉菜单组件"
+      },
+      {
+        "name": "EmptyState",
+        "class": "bestyii\\tabler\\EmptyState",
+        "file": "components/empty-state.md",
+        "title": "EmptyState 空状态",
+        "description": "无数据时的友好提示"
+      },
+      {
+        "name": "Icon",
+        "class": "bestyii\\tabler\\Icon",
+        "file": "components/icon.md",
+        "title": "Icon 图标",
+        "description": "Tabler 图标渲染"
+      },
+      {
+        "name": "ImageCheck",
+        "class": "bestyii\\tabler\\ImageCheck",
+        "file": "components/image-check.md",
+        "title": "ImageCheck 图片选择器",
+        "description": "从图片组中选择"
+      },
+      {
+        "name": "LinkPager",
+        "class": "bestyii\\tabler\\LinkPager",
+        "file": "components/link-pager.md",
+        "title": "LinkPager 分页器",
+        "description": "数据列表分页导航"
+      },
+      {
+        "name": "Modal",
+        "class": "bestyii\\tabler\\Modal",
+        "file": "components/modal.md",
+        "title": "Modal 模态框",
+        "description": "模态对话框",
+        "isContainer": true
+      },
+      {
+        "name": "Offcanvas",
+        "class": "bestyii\\tabler\\Offcanvas",
+        "file": "components/offcanvas.md",
+        "title": "Offcanvas 侧边栏",
+        "description": "侧边滑出面板",
+        "isContainer": true
+      },
+      {
+        "name": "PageHeader",
+        "class": "bestyii\\tabler\\PageHeader",
+        "file": "components/page-header.md",
+        "title": "PageHeader 页头",
+        "description": "页面标题区域"
+      },
+      {
+        "name": "Progress",
+        "class": "bestyii\\tabler\\Progress",
+        "file": "components/progress.md",
+        "title": "Progress 进度条",
+        "description": "任务进度指示"
+      },
+      {
+        "name": "Ribbon",
+        "class": "bestyii\\tabler\\Ribbon",
+        "file": "components/ribbon.md",
+        "title": "Ribbon 角标",
+        "description": "卡片角标"
+      },
+      {
+        "name": "Skeleton",
+        "class": "bestyii\\tabler\\Skeleton",
+        "file": "components/skeleton.md",
+        "title": "Skeleton 骨架屏",
+        "description": "加载占位"
+      },
+      {
+        "name": "Spinner",
+        "class": "bestyii\\tabler\\Spinner",
+        "file": "components/spinner.md",
+        "title": "Spinner 加载动画",
+        "description": "加载状态指示"
+      },
+      {
+        "name": "Status",
+        "class": "bestyii\\tabler\\Status",
+        "file": "components/status.md",
+        "title": "Status 状态",
+        "description": "状态指示器"
+      },
+      {
+        "name": "StatusDot",
+        "class": "bestyii\\tabler\\StatusDot",
+        "file": "components/status-dot.md",
+        "title": "StatusDot 状态点",
+        "description": "小型状态指示点"
+      },
+      {
+        "name": "Steps",
+        "class": "bestyii\\tabler\\Steps",
+        "file": "components/steps.md",
+        "title": "Steps 步骤",
+        "description": "分步流程指示"
+      },
+      {
+        "name": "Tabs",
+        "class": "bestyii\\tabler\\Tabs",
+        "file": "components/tabs.md",
+        "title": "Tabs 标签页",
+        "description": "选项卡切换"
+      },
+      {
+        "name": "Timeline",
+        "class": "bestyii\\tabler\\Timeline",
+        "file": "components/timeline.md",
+        "title": "Timeline 时间线",
+        "description": "事件时间线展示"
+      },
+      {
+        "name": "Toast",
+        "class": "bestyii\\tabler\\Toast",
+        "file": "components/toast.md",
+        "title": "Toast 消息提示",
+        "description": "临时消息通知"
+      },
+      {
+        "name": "Nav",
+        "class": "bestyii\\tabler\\Nav",
+        "file": "components/nav.md",
+        "title": "Nav 导航",
+        "description": "响应式导航菜单"
+      },
+      {
+        "name": "Tag",
+        "class": "bestyii\\tabler\\Tag",
+        "file": "components/tag.md",
+        "title": "Tag 标签",
+        "description": "分类标签和筛选标记"
+      },
+      {
+        "name": "Tracking",
+        "class": "bestyii\\tabler\\Tracking",
+        "file": "components/tracking.md",
+        "title": "Tracking 追踪条",
+        "description": "活动日志可视化"
+      }
+    ],
+    "forms": [
+      {
+        "name": "ActiveForm",
+        "class": "bestyii\\tabler\\ActiveForm",
+        "file": "forms/active-form.md",
+        "title": "ActiveForm 表单",
+        "description": "Tabler 风格的表单组件",
+        "isContainer": true
+      },
+      {
+        "name": "ActiveField",
+        "class": "bestyii\\tabler\\ActiveField",
+        "file": "forms/active-field.md",
+        "title": "ActiveField 表单字段",
+        "description": "增强的表单字段"
+      },
+      {
+        "name": "ColorInput",
+        "class": "bestyii\\tabler\\ColorInput",
+        "file": "forms/color-input.md",
+        "title": "ColorInput 颜色选择器",
+        "description": "可视化颜色选择"
+      },
+      {
+        "name": "Litepicker",
+        "class": "bestyii\\tabler\\Litepicker",
+        "file": "forms/litepicker.md",
+        "title": "Litepicker 日期选择",
+        "description": "日期范围选择器"
+      },
+      {
+        "name": "SelectGroup",
+        "class": "bestyii\\tabler\\SelectGroup",
+        "file": "forms/select-group.md",
+        "title": "SelectGroup 选择组",
+        "description": "样式化的单选/复选组"
+      },
+      {
+        "name": "TomSelect",
+        "class": "bestyii\\tabler\\TomSelect",
+        "file": "forms/tom-select.md",
+        "title": "TomSelect 选择器",
+        "description": "增强的下拉选择框"
+      }
+    ],
+    "grid": [
+      {
+        "name": "GridView",
+        "class": "bestyii\\tabler\\grid\\GridView",
+        "file": "components/grid-view.md",
+        "title": "GridView 数据表格",
+        "description": "Tabler 风格的数据表格"
+      }
+    ]
+  },
+  "colors": ["primary", "secondary", "success", "warning", "danger", "info", "light", "dark"],
+  "sizes": ["sm", "md", "lg"],
+  "usagePatterns": {
+    "widget": "WidgetClass::widget(['property' => 'value'])",
+    "container": "WidgetClass::begin(['property' => 'value']); echo 'content'; WidgetClass::end();",
+    "formField": "$form->field($model, 'attribute')->widget(WidgetClass::class, ['property' => 'value'])"
+  }
+}
