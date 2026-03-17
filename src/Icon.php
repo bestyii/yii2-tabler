@@ -2,49 +2,24 @@
 
 namespace bestyii\tabler;
 
-use bestyii\tabler\Widget;
-
+use bestyii\tabler\assets\TablerIconsAsset;
 use yii\helpers\Html;
 
-
-/**
- * Icon widget renders a Tabler icon.
- *
- * Usage:
- * ```php
- * echo Icon::widget(['name' => 'home']);
- * ```
- */
 class Icon extends Widget
 {
-    /**
-     * @var string the icon name (e.g. 'home', 'user')
-     */
-    public $name;
+    public string $name = '';
+    public string $tag = 'i';
+    public array $options = [];
 
-    /**
-     * @var array HTML attributes for the icon tag
-     */
-    public $options = [];
-
-    /**
-     * @inheritDoc
-     */
     public function run(): string
     {
-        if ($this->name === null) {
+        if ($this->name === '') {
             return '';
         }
 
-        $options = $this->options;
-        if (strpos($this->name, 'ti-') !== 0) {
-            Html::addCssClass($options, 'ti');
-            Html::addCssClass($options, 'ti-' . $this->name);
-        } else {
-            Html::addCssClass($options, $this->name);
-        }
-        Html::addCssClass($options, 'icon');
+        TablerIconsAsset::register($this->getView());
+        Html::addCssClass($this->options, ['icon' => 'ti', 'icon-name' => 'ti-' . $this->name]);
 
-        return Html::tag('i', '', $options);
+        return Html::tag($this->tag, '', $this->options);
     }
 }

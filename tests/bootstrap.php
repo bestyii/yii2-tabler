@@ -1,10 +1,14 @@
 <?php
 
-defined('YII_DEBUG') or define('YII_DEBUG', true);
-defined('YII_ENV') or define('YII_ENV', 'test');
+declare(strict_types=1);
 
-require_once __DIR__ . '/../../../../../vendor/autoload.php';
-require_once __DIR__ . '/../../../../../vendor/yiisoft/yii2/Yii.php';
+error_reporting(-1);
+
+const YII_ENABLE_ERROR_HANDLER = false;
+const YII_DEBUG = true;
+
+require_once __DIR__ . '/../../../../vendor/autoload.php';
+require_once __DIR__ . '/../../../../vendor/yiisoft/yii2/Yii.php';
 
 Yii::setAlias('@bestyii/tabler', dirname(__DIR__) . '/src');
 Yii::setAlias('@bestyii/tabler/tests', __DIR__);

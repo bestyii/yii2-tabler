@@ -2,11 +2,11 @@
 
 namespace bestyii\tabler\assets;
 
-use grazio\core\web\AssetBundle;
+use bestyii\tabler\assets\BaseAssetBundle as AssetBundle;
 
 class SortablejsAsset extends AssetBundle
 {
-    public $sourcePath = '@npm-asset/sortablejs';
+    public $sourcePath = '@npm/sortablejs';
     
     public $js = [
         'Sortable.min.js',

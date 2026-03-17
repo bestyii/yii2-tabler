@@ -7,7 +7,7 @@
 
 namespace bestyii\tabler\assets;
 
-use grazio\core\web\AssetBundle;
+use bestyii\tabler\assets\BaseAssetBundle as AssetBundle;
 
 /**
  * JsVectorMapAsset
