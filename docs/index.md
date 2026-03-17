@@ -12,3 +12,11 @@ This is the initial docs bootstrap page for the package.
 - Preview work starts from upstream mirror mode
 
 [Button component](components/button)
+
+[Alert component](components/alert)
+
+[Card component](components/card)
+
+[Nav component](components/nav)
+
+[Modal component](components/modal)
