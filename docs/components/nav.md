@@ -3,7 +3,7 @@ title: Nav
 description: Primary navigation renderer for preview layouts and docs shell.
 related: [Icon]
 status: hybrid-ready
-preview: /preview-lab/dashboard
+preview: /preview-lab/navigation
 mirror: /preview/navigation
 source: src/Nav.php
 test: tests/NavTest.php
