@@ -2,6 +2,12 @@
 title: Card
 description: Surface container for stats, forms and preview blocks.
 related: [Button, Badge]
+status: hybrid-ready
+preview: /preview-lab/cards
+mirror: /preview/cards
+source: src/Card.php
+test: tests/CardTest.php
+package: bestyii/yii2-tabler
 ---
 
 # Card

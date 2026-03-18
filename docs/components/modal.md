@@ -2,6 +2,12 @@
 title: Modal
 description: Dialog shell for confirmation flows and embedded forms.
 related: [Button]
+status: baseline
+preview: /preview/modals
+mirror: /preview/modals
+source: src/Modal.php
+test: tests/ModalTest.php
+package: bestyii/yii2-tabler
 ---
 
 # Modal

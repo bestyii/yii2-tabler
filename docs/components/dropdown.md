@@ -2,6 +2,12 @@
 title: Dropdown
 description: Dropdown menu renderer for actions and nested navigation.
 related: [Button, Icon]
+status: hybrid-ready
+preview: /preview-lab/buttons
+mirror: /preview/dropdowns
+source: src/Dropdown.php
+test: tests/DropdownTest.php
+package: bestyii/yii2-tabler
 ---
 
 # Dropdown

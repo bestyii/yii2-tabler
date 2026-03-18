@@ -2,6 +2,12 @@
 title: Toast
 description: Notification popup shell for short-lived messages.
 related: [Avatar, Icon]
+status: hybrid-ready
+preview: /preview-lab/cards
+mirror: /preview/toasts
+source: src/Toast.php
+test: tests/ToastTest.php
+package: bestyii/yii2-tabler
 ---
 
 # Toast

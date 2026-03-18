@@ -2,6 +2,12 @@
 title: Nav
 description: Primary navigation renderer for preview layouts and docs shell.
 related: [Icon]
+status: hybrid-ready
+preview: /preview-lab/dashboard
+mirror: /preview/navigation
+source: src/Nav.php
+test: tests/NavTest.php
+package: bestyii/yii2-tabler
 ---
 
 # Nav
