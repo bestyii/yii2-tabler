@@ -63,6 +63,8 @@ This is the local-first docs bootstrap for the package.
 
 [Select component](components/select)
 
+[Signature component](components/signature)
+
 [Tabs component](components/tabs)
 
 [Table component](components/table)
@@ -72,6 +74,8 @@ This is the local-first docs bootstrap for the package.
 [Toast component](components/toast)
 
 [VectorMap component](components/vector-map)
+
+[Wysiwyg component](components/wysiwyg)
 
 [Nav component](components/nav)
 

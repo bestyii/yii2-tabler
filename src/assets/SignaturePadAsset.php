@@ -6,10 +6,10 @@ use bestyii\tabler\assets\BaseAssetBundle as AssetBundle;
 
 class SignaturePadAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/signature_pad/dist';
+    public $sourcePath = '@bower/signature_pad';
     
     public $js = [
-        'signature_pad.umd.min.js',
+        'dist/signature_pad.umd.min.js',
     ];
     
     public $depends = [
