@@ -2,8 +2,8 @@
 title: Modal
 description: Dialog shell for confirmation flows and embedded forms.
 related: [Button]
-status: baseline
-preview: /preview/modals
+status: hybrid-ready
+preview: /preview-lab/modals
 mirror: /preview/modals
 source: src/Modal.php
 test: tests/ModalTest.php
