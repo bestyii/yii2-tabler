@@ -49,6 +49,8 @@ This is the local-first docs bootstrap for the package.
 
 [Flag component](components/flag)
 
+[Hr component](components/hr)
+
 [Icon component](components/icon)
 
 [Offcanvas component](components/offcanvas)
@@ -91,6 +93,8 @@ This is the local-first docs bootstrap for the package.
 
 [NavSegmented component](components/nav-segmented)
 
+[AdvancedTable component](components/advanced-table)
+
 [Modal component](components/modal)
 
 [Pagination component](components/pagination)
@@ -98,6 +102,8 @@ This is the local-first docs bootstrap for the package.
 [Status component](components/status)
 
 [Steps component](components/steps)
+
+[SwitchIcon component](components/switch-icon)
 
 [Tag component](components/tag)
 
