@@ -21,9 +21,13 @@ This is the local-first docs bootstrap for the package.
 
 [Alert component](components/alert)
 
+[Accordion component](components/accordion)
+
 [Avatar component](components/avatar)
 
 [Badge component](components/badge)
+
+[Breadcrumb component](components/breadcrumb)
 
 [Card component](components/card)
 
@@ -44,6 +48,14 @@ This is the local-first docs bootstrap for the package.
 [Nav component](components/nav)
 
 [Modal component](components/modal)
+
+[Pagination component](components/pagination)
+
+[Status component](components/status)
+
+[Steps component](components/steps)
+
+[Tag component](components/tag)
 
 ## Validation Pages
 
