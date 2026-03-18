@@ -15,7 +15,19 @@ This is the initial docs bootstrap page for the package.
 
 [Alert component](components/alert)
 
+[Avatar component](components/avatar)
+
 [Card component](components/card)
+
+[Dropdown component](components/dropdown)
+
+[Offcanvas component](components/offcanvas)
+
+[Progress component](components/progress)
+
+[Tabs component](components/tabs)
+
+[Toast component](components/toast)
 
 [Nav component](components/nav)
 
