@@ -3,7 +3,7 @@ title: Dropdown
 description: Dropdown menu renderer for actions and nested navigation.
 related: [Button, Icon]
 status: hybrid-ready
-preview: /preview-lab/buttons
+preview: /preview-lab/settings
 mirror: /preview/dropdowns
 source: src/Dropdown.php
 test: tests/DropdownTest.php

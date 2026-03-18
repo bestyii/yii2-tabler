@@ -3,7 +3,7 @@ title: Progress
 description: Progress bar widget with stacked and labeled variants.
 related: [Badge]
 status: hybrid-ready
-preview: /preview-lab/cards
+preview: /preview-lab/settings
 mirror: /preview/progress
 source: src/Progress.php
 test: tests/ProgressTest.php

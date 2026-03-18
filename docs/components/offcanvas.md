@@ -3,7 +3,7 @@ title: Offcanvas
 description: Slide-over panel container for filters, menus and secondary workflows.
 related: [Button]
 status: hybrid-ready
-preview: /preview-lab/buttons
+preview: /preview-lab/settings
 mirror: /preview/offcanvas
 source: src/Offcanvas.php
 test: tests/OffcanvasTest.php

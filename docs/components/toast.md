@@ -3,7 +3,7 @@ title: Toast
 description: Notification popup shell for short-lived messages.
 related: [Avatar, Icon]
 status: hybrid-ready
-preview: /preview-lab/cards
+preview: /preview-lab/settings
 mirror: /preview/toasts
 source: src/Toast.php
 test: tests/ToastTest.php

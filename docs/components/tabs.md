@@ -3,7 +3,7 @@ title: Tabs
 description: Bootstrap 5 / Tabler tabs widget for section switching.
 related: [Nav, Card]
 status: hybrid-ready
-preview: /preview-lab/cards
+preview: /preview-lab/settings
 mirror: /preview/tabs
 source: src/Tabs.php
 test: tests/TabsTest.php
