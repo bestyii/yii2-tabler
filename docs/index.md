@@ -41,7 +41,15 @@ This is the local-first docs bootstrap for the package.
 
 [Progress component](components/progress)
 
+[Rating component](components/rating)
+
+[Ribbon component](components/ribbon)
+
+[Spinner component](components/spinner)
+
 [Tabs component](components/tabs)
+
+[Table component](components/table)
 
 [Toast component](components/toast)
 
