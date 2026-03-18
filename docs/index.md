@@ -31,6 +31,8 @@ This is the local-first docs bootstrap for the package.
 
 [Breadcrumb component](components/breadcrumb)
 
+[ButtonGroup component](components/button-group)
+
 [Card component](components/card)
 
 [Carousel component](components/carousel)
@@ -45,6 +47,10 @@ This is the local-first docs bootstrap for the package.
 
 [Dropdown component](components/dropdown)
 
+[DropdownMenu component](components/dropdown-menu)
+
+[EmptyState component](components/empty)
+
 [Fullcalendar component](components/fullcalendar)
 
 [Flag component](components/flag)
@@ -56,6 +62,8 @@ This is the local-first docs bootstrap for the package.
 [Offcanvas component](components/offcanvas)
 
 [PageHeader component](components/page-header)
+
+[Payment component](components/payment)
 
 [Progress component](components/progress)
 
@@ -100,6 +108,10 @@ This is the local-first docs bootstrap for the package.
 [Pagination component](components/pagination)
 
 [Status component](components/status)
+
+[StatusDot component](components/status-dot)
+
+[StatusIndicator component](components/status-indicator)
 
 [Steps component](components/steps)
 
