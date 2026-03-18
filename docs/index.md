@@ -31,6 +31,10 @@ This is the local-first docs bootstrap for the package.
 
 [Card component](components/card)
 
+[Carousel component](components/carousel)
+
+[Chart component](components/chart)
+
 [Colorpicker component](components/colorpicker)
 
 [Datepicker component](components/datepicker)
@@ -38,6 +42,8 @@ This is the local-first docs bootstrap for the package.
 [Dropzone component](components/dropzone)
 
 [Dropdown component](components/dropdown)
+
+[Fullcalendar component](components/fullcalendar)
 
 [Icon component](components/icon)
 
@@ -61,7 +67,11 @@ This is the local-first docs bootstrap for the package.
 
 [Table component](components/table)
 
+[Typed component](components/typed)
+
 [Toast component](components/toast)
+
+[VectorMap component](components/vector-map)
 
 [Nav component](components/nav)
 
