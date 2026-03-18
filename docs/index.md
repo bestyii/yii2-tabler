@@ -25,6 +25,8 @@ This is the local-first docs bootstrap for the package.
 
 [Avatar component](components/avatar)
 
+[AvatarList component](components/avatar-list)
+
 [Badge component](components/badge)
 
 [Breadcrumb component](components/breadcrumb)
@@ -44,6 +46,8 @@ This is the local-first docs bootstrap for the package.
 [Dropdown component](components/dropdown)
 
 [Fullcalendar component](components/fullcalendar)
+
+[Flag component](components/flag)
 
 [Icon component](components/icon)
 
@@ -69,6 +73,12 @@ This is the local-first docs bootstrap for the package.
 
 [Table component](components/table)
 
+[Timeline component](components/timeline)
+
+[Tracking component](components/tracking)
+
+[Trending component](components/trending)
+
 [Typed component](components/typed)
 
 [Toast component](components/toast)
@@ -78,6 +88,8 @@ This is the local-first docs bootstrap for the package.
 [Wysiwyg component](components/wysiwyg)
 
 [Nav component](components/nav)
+
+[NavSegmented component](components/nav-segmented)
 
 [Modal component](components/modal)
 
