@@ -23,11 +23,17 @@ This is the local-first docs bootstrap for the package.
 
 [Avatar component](components/avatar)
 
+[Badge component](components/badge)
+
 [Card component](components/card)
 
 [Dropdown component](components/dropdown)
 
+[Icon component](components/icon)
+
 [Offcanvas component](components/offcanvas)
+
+[PageHeader component](components/page-header)
 
 [Progress component](components/progress)
 
