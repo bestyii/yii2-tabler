@@ -31,6 +31,12 @@ This is the local-first docs bootstrap for the package.
 
 [Card component](components/card)
 
+[Colorpicker component](components/colorpicker)
+
+[Datepicker component](components/datepicker)
+
+[Dropzone component](components/dropzone)
+
 [Dropdown component](components/dropdown)
 
 [Icon component](components/icon)
@@ -41,11 +47,15 @@ This is the local-first docs bootstrap for the package.
 
 [Progress component](components/progress)
 
+[Range component](components/range)
+
 [Rating component](components/rating)
 
 [Ribbon component](components/ribbon)
 
 [Spinner component](components/spinner)
+
+[Select component](components/select)
 
 [Tabs component](components/tabs)
 
