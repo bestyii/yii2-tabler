@@ -3,8 +3,8 @@ title: Chart
 description: ApexCharts-based widget wrapper for analytics and readiness dashboards.
 related: [Card, Progress]
 status: hybrid-ready
-preview: /preview-lab/plugins
-mirror: /preview/charts
+preview: /preview-lab/uptime
+mirror: /preview/uptime
 source: src/Chart.php
 test: tests/ChartTest.php
 package: bestyii/yii2-tabler

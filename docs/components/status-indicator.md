@@ -3,8 +3,8 @@ title: StatusIndicator
 description: Multi-circle animated indicator for live streams, background jobs and activity pulses.
 related: [Status, StatusDot]
 status: hybrid-ready
-preview: /preview-lab/dashboard
-mirror: /preview/dashboard-crypto
+preview: /preview-lab/uptime
+mirror: /preview/uptime
 source: src/StatusIndicator.php
 test: tests/StatusIndicatorTest.php
 package: bestyii/yii2-tabler

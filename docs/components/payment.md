@@ -3,8 +3,8 @@ title: Payment
 description: Provider badge helper for payment, billing and subscription UI.
 related: [Badge]
 status: hybrid-ready
-preview: /preview-lab/profile
-mirror: /preview/cards
+preview: /preview-lab/payment-providers
+mirror: /preview/payment-providers
 source: src/Payment.php
 test: tests/PaymentTest.php
 package: bestyii/yii2-tabler

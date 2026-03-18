@@ -9,6 +9,8 @@ class Accordion extends Widget
     public array $items = [];
     public bool $flush = false;
     public bool $alwaysOpen = false;
+    public string $headerTag = 'h2';
+    public bool $encodeTitles = true;
     public array $options = [];
 
     public function run(): string
@@ -43,6 +45,7 @@ class Accordion extends Widget
 
             $headingId = $this->options['id'] . '-heading-' . $index;
             $collapseId = $this->options['id'] . '-collapse-' . $index;
+            $headerTag = (string) ($item['headerTag'] ?? $this->headerTag);
 
             $buttonOptions['type'] = 'button';
             $buttonOptions['data-bs-toggle'] = 'collapse';
@@ -56,9 +59,17 @@ class Accordion extends Widget
                 $collapseOptions['data-bs-parent'] = '#' . $this->options['id'];
             }
 
+            $buttonContent = array_key_exists('buttonContent', $item)
+                ? (string) $item['buttonContent']
+                : (
+                    (bool) ($item['encode'] ?? $this->encodeTitles)
+                        ? Html::encode((string) ($item['title'] ?? ''))
+                        : (string) ($item['title'] ?? '')
+                );
+
             $header = Html::tag(
-                'h2',
-                Html::tag('button', Html::encode((string) ($item['title'] ?? '')), $buttonOptions),
+                $headerTag,
+                Html::tag('button', $buttonContent, $buttonOptions),
                 array_merge($headerOptions, ['id' => $headingId])
             );
 

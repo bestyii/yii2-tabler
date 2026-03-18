@@ -3,7 +3,7 @@ title: Accordion
 description: Collapsible content sections using Bootstrap 5 accordion markup.
 related: [Card]
 status: hybrid-ready
-preview: /preview-lab/navigation
+preview: /preview-lab/faq
 mirror: /preview/accordion
 source: src/Accordion.php
 test: tests/AccordionTest.php

@@ -24,4 +24,26 @@ class AccordionTest extends TestCase
         $this->assertStringContainsString('Mirror and hybrid links', $html);
         $this->assertStringContainsString('data-bs-parent', $html);
     }
+
+    public function testAccordionSupportsCustomHeaderTagAndButtonContent(): void
+    {
+        $html = Accordion::widget([
+            'headerTag' => 'div',
+            'options' => ['class' => 'accordion accordion-tabs'],
+            'items' => [
+                [
+                    'buttonContent' => 'Question<div class="accordion-button-toggle"><i class="ti ti-chevron-down"></i></div>',
+                    'content' => '<p class="mb-0">Answer</p>',
+                    'active' => true,
+                    'encode' => false,
+                    'bodyOptions' => ['class' => 'accordion-body pt-0'],
+                ],
+            ],
+        ]);
+
+        $this->assertStringContainsString('accordion-tabs', $html);
+        $this->assertStringContainsString('<div id="', $html);
+        $this->assertStringContainsString('accordion-button-toggle', $html);
+        $this->assertStringContainsString('accordion-body pt-0', $html);
+    }
 }
