@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -47,7 +49,9 @@ class NavSegmented extends Widget
         if (!empty($item['icon'])) {
             $content .= Icon::widget([
                 'name' => (string) $item['icon'],
-                'options' => ['class' => 'nav-link-icon'],
+                'options' => [
+                    'class' => 'nav-link-icon',
+                ],
             ]);
         }
         $content .= $label;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -9,7 +11,9 @@ class Modal extends Widget
     public mixed $header = null;
     public array $headerOptions = [];
     public ?string $title = null;
-    public array $titleOptions = ['class' => 'modal-title'];
+    public array $titleOptions = [
+        'class' => 'modal-title',
+    ];
     public array|bool $closeButton = [];
     public ?string $footer = null;
     public array $footerOptions = [];
@@ -44,7 +48,10 @@ class Modal extends Widget
         $this->options['tabindex'] ??= '-1';
         $this->options['role'] ??= 'dialog';
         $this->options['aria-hidden'] ??= 'true';
-        Html::addCssClass($this->options, ['modal' => 'modal', 'fade' => 'fade']);
+        Html::addCssClass($this->options, [
+            'modal' => 'modal',
+            'fade' => 'fade',
+        ]);
         if ($this->blur) {
             Html::addCssClass($this->options, 'modal-blur');
         }
@@ -60,7 +67,9 @@ class Modal extends Widget
 
         $sections = [];
         if ($this->statusColor !== null && $this->statusColor !== '') {
-            $sections[] = Html::tag('div', '', ['class' => 'modal-status bg-' . $this->statusColor]);
+            $sections[] = Html::tag('div', '', [
+                'class' => 'modal-status bg-' . $this->statusColor,
+            ]);
         }
 
         $header = $this->renderHeader();
@@ -68,14 +77,18 @@ class Modal extends Widget
             $sections[] = $header;
         }
 
-        $sections[] = Html::tag('div', $body, ['class' => 'modal-body']);
+        $sections[] = Html::tag('div', $body, [
+            'class' => 'modal-body',
+        ]);
 
         $footer = $this->renderFooter();
         if ($footer !== '') {
             $sections[] = $footer;
         }
 
-        $content = Html::tag('div', implode("\n", $sections), ['class' => 'modal-content']);
+        $content = Html::tag('div', implode("\n", $sections), [
+            'class' => 'modal-content',
+        ]);
         $dialog = Html::tag('div', $content, $this->dialogOptions);
 
         return Html::tag('div', $dialog, $this->options);

@@ -22,7 +22,10 @@ class NavTest extends TestCase
                     'label' => 'Settings',
                     'url' => '#',
                     'items' => [
-                        ['label' => 'Profile', 'url' => '/profile'],
+                        [
+                            'label' => 'Profile',
+                            'url' => '/profile',
+                        ],
                     ],
                 ],
             ],

@@ -17,12 +17,26 @@ class AdvancedTableTest extends TestCase
             'description' => 'Dense validation table',
             'searchPlaceholder' => 'Search backlog',
             'columns' => [
-                ['attribute' => 'owner', 'label' => 'Owner', 'encode' => true],
-                ['attribute' => 'lane', 'label' => 'Lane', 'encode' => true],
+                [
+                    'attribute' => 'owner',
+                    'label' => 'Owner',
+                    'encode' => true,
+                ],
+                [
+                    'attribute' => 'lane',
+                    'label' => 'Lane',
+                    'encode' => true,
+                ],
             ],
             'rows' => [
-                ['owner' => 'Alice Wong', 'lane' => 'Mirror routing'],
-                ['owner' => 'Ben Yu', 'lane' => 'Hybrid dashboard'],
+                [
+                    'owner' => 'Alice Wong',
+                    'lane' => 'Mirror routing',
+                ],
+                [
+                    'owner' => 'Ben Yu',
+                    'lane' => 'Hybrid dashboard',
+                ],
             ],
         ]);
 

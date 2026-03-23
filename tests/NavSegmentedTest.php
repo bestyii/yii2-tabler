@@ -12,9 +12,17 @@ class NavSegmentedTest extends TestCase
     {
         $html = NavSegmented::widget([
             'items' => [
-                ['label' => 'Overview', 'active' => true],
-                ['label' => 'Compare'],
-                ['label' => 'Docs', 'disabled' => true],
+                [
+                    'label' => 'Overview',
+                    'active' => true,
+                ],
+                [
+                    'label' => 'Compare',
+                ],
+                [
+                    'label' => 'Docs',
+                    'disabled' => true,
+                ],
             ],
             'fullWidth' => true,
         ]);

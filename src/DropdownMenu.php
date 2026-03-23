@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -47,12 +49,16 @@ class DropdownMenu extends Widget
 
         foreach ($this->items as $item) {
             if ($item === '-') {
-                $items[] = Html::tag('div', '', ['class' => 'dropdown-divider']);
+                $items[] = Html::tag('div', '', [
+                    'class' => 'dropdown-divider',
+                ]);
                 continue;
             }
 
             if (is_string($item)) {
-                $items[] = Html::a(Html::encode($item), '#', ['class' => 'dropdown-item']);
+                $items[] = Html::a(Html::encode($item), '#', [
+                    'class' => 'dropdown-item',
+                ]);
                 continue;
             }
 
@@ -62,12 +68,16 @@ class DropdownMenu extends Widget
 
             $type = (string) ($item['type'] ?? 'link');
             if ($type === 'divider') {
-                $items[] = Html::tag('div', '', ['class' => 'dropdown-divider']);
+                $items[] = Html::tag('div', '', [
+                    'class' => 'dropdown-divider',
+                ]);
                 continue;
             }
 
             if ($type === 'header') {
-                $items[] = Html::tag('div', (string) ($item['label'] ?? ''), ['class' => 'dropdown-header']);
+                $items[] = Html::tag('div', (string) ($item['label'] ?? ''), [
+                    'class' => 'dropdown-header',
+                ]);
                 continue;
             }
 
@@ -90,7 +100,9 @@ class DropdownMenu extends Widget
             'checked' => !empty($item['checked']),
         ]);
 
-        return Html::tag('label', $input . Html::encode($label), ['class' => 'dropdown-item']);
+        return Html::tag('label', $input . Html::encode($label), [
+            'class' => 'dropdown-item',
+        ]);
     }
 
     private function renderLinkItem(array $item): string
@@ -116,14 +128,18 @@ class DropdownMenu extends Widget
         if (!empty($item['icon'])) {
             $content .= Icon::widget([
                 'name' => (string) $item['icon'],
-                'options' => ['class' => 'dropdown-item-icon'],
+                'options' => [
+                    'class' => 'dropdown-item-icon',
+                ],
             ]);
         }
 
         $content .= Html::encode($label);
 
         if (!empty($item['badge'])) {
-            $content .= Html::tag('span', Html::encode((string) $item['badge']), ['class' => 'badge bg-primary text-primary-fg ms-auto']);
+            $content .= Html::tag('span', Html::encode((string) $item['badge']), [
+                'class' => 'badge bg-primary text-primary-fg ms-auto',
+            ]);
         }
 
         return Html::a($content, $url, $linkOptions);

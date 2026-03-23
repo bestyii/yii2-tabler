@@ -14,7 +14,9 @@ class ModalTest extends TestCase
         $html = Modal::widget([
             'title' => 'Create Project',
             'body' => '<p>Form body</p>',
-            'footer' => Button::widget(['label' => 'Save']),
+            'footer' => Button::widget([
+                'label' => 'Save',
+            ]),
             'size' => 'lg',
             'status' => 'success',
         ]);

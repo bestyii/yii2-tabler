@@ -2,3 +2,5 @@ tabler-dev
 .phpunit.result.cache
 .phpunit.cache/
 .DS_Store
+/composer.lock
+/vendor/

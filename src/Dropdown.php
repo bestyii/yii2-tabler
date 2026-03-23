@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -39,7 +41,9 @@ class Dropdown extends Widget
         $lines = [];
         foreach ($items as $item) {
             if ($item === '-') {
-                $lines[] = Html::tag('div', '', ['class' => 'dropdown-divider']);
+                $lines[] = Html::tag('div', '', [
+                    'class' => 'dropdown-divider',
+                ]);
                 continue;
             }
 
@@ -53,7 +57,9 @@ class Dropdown extends Widget
             }
 
             if (($item['type'] ?? null) === 'header') {
-                $lines[] = Html::tag('div', (string) ($item['label'] ?? ''), ['class' => 'dropdown-header']);
+                $lines[] = Html::tag('div', (string) ($item['label'] ?? ''), [
+                    'class' => 'dropdown-header',
+                ]);
                 continue;
             }
 
@@ -65,7 +71,9 @@ class Dropdown extends Widget
             if (!empty($item['icon'])) {
                 $label = Icon::widget([
                     'name' => (string) $item['icon'],
-                    'options' => ['class' => 'dropdown-item-icon'],
+                    'options' => [
+                        'class' => 'dropdown-item-icon',
+                    ],
                 ]) . $label;
             }
 
@@ -81,8 +89,10 @@ class Dropdown extends Widget
                 $lines[] = Html::tag(
                     'div',
                     Html::a($label, $url, $linkOptions) .
-                    Html::tag('div', implode("\n", $this->renderItems($item['items'])), ['class' => 'dropdown-menu']),
-                    $itemOptions
+                    Html::tag('div', implode("\n", $this->renderItems($item['items'])), [
+                        'class' => 'dropdown-menu',
+                    ]),
+                    $itemOptions,
                 );
                 continue;
             }

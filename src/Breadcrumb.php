@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -19,7 +21,10 @@ class Breadcrumb extends Widget
         $items = [];
         foreach ($this->items as $item) {
             if (is_string($item)) {
-                $item = ['label' => $item, 'active' => true];
+                $item = [
+                    'label' => $item,
+                    'active' => true,
+                ];
             }
 
             if (($item['visible'] ?? true) === false) {
@@ -40,14 +45,14 @@ class Breadcrumb extends Widget
             $items[] = Html::tag(
                 'li',
                 Html::a($label, $item['url'], (array) ($item['linkOptions'] ?? [])),
-                $itemOptions
+                $itemOptions,
             );
         }
 
         return Html::tag(
             'nav',
             Html::tag('ol', implode("\n", $items), $this->options),
-            $this->navOptions
+            $this->navOptions,
         );
     }
 
@@ -60,7 +65,9 @@ class Breadcrumb extends Widget
         if (!empty($item['icon'])) {
             $content = Icon::widget([
                 'name' => (string) $item['icon'],
-                'options' => ['class' => 'me-1'],
+                'options' => [
+                    'class' => 'me-1',
+                ],
             ]) . $content;
         }
 

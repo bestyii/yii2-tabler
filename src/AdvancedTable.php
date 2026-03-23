@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use bestyii\tabler\assets\ListjsAsset;
-use Closure;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 use yii\helpers\Json;
@@ -34,7 +35,9 @@ class AdvancedTable extends Widget
             sort($this->pageSizes);
         }
 
-        $content = Html::tag('div', $this->renderHeader() . $this->renderTableContainer(), ['class' => 'card-table']);
+        $content = Html::tag('div', $this->renderHeader() . $this->renderTableContainer(), [
+            'class' => 'card-table',
+        ]);
 
         $this->registerPlugin();
 
@@ -44,15 +47,22 @@ class AdvancedTable extends Widget
     private function renderHeader(): string
     {
         $searchId = $this->options['id'] . '-search';
-        $search = Html::tag('div',
-            Html::tag('span', Icon::widget(['name' => 'search']), ['class' => 'input-group-text']) .
+        $search = Html::tag(
+            'div',
+            Html::tag('span', Icon::widget([
+                'name' => 'search',
+            ]), [
+                'class' => 'input-group-text',
+            ]) .
             Html::input('text', null, '', [
                 'id' => $searchId,
                 'class' => 'form-control',
                 'autocomplete' => 'off',
                 'placeholder' => $this->searchPlaceholder,
             ]),
-            ['class' => 'input-group input-group-flat w-auto']
+            [
+                'class' => 'input-group input-group-flat w-auto',
+            ],
         );
 
         $tools = [$search];
@@ -60,22 +70,40 @@ class AdvancedTable extends Widget
             $tools[] = (string) $action;
         }
 
-        return Html::tag('div',
-            Html::tag('div',
-                Html::tag('div',
-                    Html::tag('h3', Html::encode($this->title), ['class' => 'card-title mb-0'])
+        return Html::tag(
+            'div',
+            Html::tag(
+                'div',
+                Html::tag(
+                    'div',
+                    Html::tag('h3', Html::encode($this->title), [
+                        'class' => 'card-title mb-0',
+                    ])
                     . ($this->description !== null && $this->description !== ''
-                        ? Html::tag('p', Html::encode($this->description), ['class' => 'text-secondary m-0'])
+                        ? Html::tag('p', Html::encode($this->description), [
+                            'class' => 'text-secondary m-0',
+                        ])
                         : ''),
-                    ['class' => 'col']
+                    [
+                        'class' => 'col',
+                    ],
                 )
-                . Html::tag('div',
-                    Html::tag('div', implode("\n", $tools), ['class' => 'ms-auto d-flex flex-wrap align-items-center gap-2']),
-                    ['class' => 'col-md-auto col-sm-12']
+                . Html::tag(
+                    'div',
+                    Html::tag('div', implode("\n", $tools), [
+                        'class' => 'ms-auto d-flex flex-wrap align-items-center gap-2',
+                    ]),
+                    [
+                        'class' => 'col-md-auto col-sm-12',
+                    ],
                 ),
-                ['class' => 'row w-100']
+                [
+                    'class' => 'row w-100',
+                ],
             ),
-            ['class' => 'card-header']
+            [
+                'class' => 'card-header',
+            ],
         );
     }
 
@@ -84,12 +112,18 @@ class AdvancedTable extends Widget
         $id = $this->options['id'];
         $pageSizeId = $id . '-page-size';
 
-        $table = Html::tag('div',
-            Html::tag('table',
+        $table = Html::tag(
+            'div',
+            Html::tag(
+                'table',
                 $this->renderHeaderRow() . $this->renderBody(),
-                ['class' => 'table table-vcenter']
+                [
+                    'class' => 'table table-vcenter',
+                ],
             ),
-            ['class' => 'table-responsive']
+            [
+                'class' => 'table-responsive',
+            ],
         );
 
         $pageSizeOptions = [];
@@ -100,21 +134,35 @@ class AdvancedTable extends Widget
             ]);
         }
 
-        $footer = Html::tag('div',
-            Html::tag('div',
-                Html::tag('span', Html::encode('Show'), ['class' => 'text-secondary small']) .
+        $footer = Html::tag(
+            'div',
+            Html::tag(
+                'div',
+                Html::tag('span', Html::encode('Show'), [
+                    'class' => 'text-secondary small',
+                ]) .
                 Html::tag('select', implode("\n", $pageSizeOptions), [
                     'id' => $pageSizeId,
                     'class' => 'form-select form-select-sm w-auto',
                 ]) .
-                Html::tag('span', Html::encode($this->recordsLabel), ['class' => 'text-secondary small']),
-                ['class' => 'd-flex align-items-center gap-2']
+                Html::tag('span', Html::encode($this->recordsLabel), [
+                    'class' => 'text-secondary small',
+                ]),
+                [
+                    'class' => 'd-flex align-items-center gap-2',
+                ],
             )
-            . Html::tag('ul', '', ['class' => 'pagination m-0']),
-            ['class' => 'card-footer d-flex align-items-center justify-content-between gap-3']
+            . Html::tag('ul', '', [
+                'class' => 'pagination m-0',
+            ]),
+            [
+                'class' => 'card-footer d-flex align-items-center justify-content-between gap-3',
+            ],
         );
 
-        return Html::tag('div', $table . $footer, ['id' => $id]);
+        return Html::tag('div', $table . $footer, [
+            'id' => $id,
+        ]);
     }
 
     private function renderHeaderRow(): string
@@ -129,7 +177,7 @@ class AdvancedTable extends Widget
                     'type' => 'button',
                     'class' => 'sort table-sort d-inline-flex justify-content-between w-100',
                     'data-sort' => $sortName,
-                ]
+                ],
             );
             $headers[] = Html::tag('th', $button, (array) ($column['headerOptions'] ?? []));
         }
@@ -145,7 +193,9 @@ class AdvancedTable extends Widget
             return Html::tag('tbody', Html::tag('tr', Html::tag('td', Html::encode($this->emptyText), [
                 'colspan' => max(1, count($columns)),
                 'class' => 'text-secondary',
-            ])), ['class' => 'list']);
+            ])), [
+                'class' => 'list',
+            ]);
         }
 
         $rows = [];
@@ -161,7 +211,9 @@ class AdvancedTable extends Widget
             $rows[] = Html::tag('tr', implode("\n", $cells));
         }
 
-        return Html::tag('tbody', implode("\n", $rows), ['class' => 'list']);
+        return Html::tag('tbody', implode("\n", $rows), [
+            'class' => 'list',
+        ]);
     }
 
     private function registerPlugin(): void
@@ -233,7 +285,7 @@ JS;
     {
         return array_values(array_filter(
             $this->columns,
-            static fn(array $column): bool => ($column['visible'] ?? true) !== false
+            static fn(array $column): bool => ($column['visible'] ?? true) !== false,
         ));
     }
 

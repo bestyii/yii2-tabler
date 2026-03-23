@@ -13,8 +13,15 @@ class StepsTest extends TestCase
         $html = Steps::widget([
             'vertical' => true,
             'items' => [
-                ['label' => 'Mirror', 'completed' => true],
-                ['label' => 'Hybrid', 'active' => true, 'description' => 'Local candidate'],
+                [
+                    'label' => 'Mirror',
+                    'completed' => true,
+                ],
+                [
+                    'label' => 'Hybrid',
+                    'active' => true,
+                    'description' => 'Local candidate',
+                ],
             ],
         ]);
 

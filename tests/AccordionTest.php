@@ -13,8 +13,15 @@ class AccordionTest extends TestCase
         $html = Accordion::widget([
             'flush' => true,
             'items' => [
-                ['title' => 'Navigation parity', 'content' => 'Mirror and hybrid links', 'active' => true],
-                ['title' => 'Dense layouts', 'content' => 'Table and pagination checks'],
+                [
+                    'title' => 'Navigation parity',
+                    'content' => 'Mirror and hybrid links',
+                    'active' => true,
+                ],
+                [
+                    'title' => 'Dense layouts',
+                    'content' => 'Table and pagination checks',
+                ],
             ],
         ]);
 
@@ -29,14 +36,18 @@ class AccordionTest extends TestCase
     {
         $html = Accordion::widget([
             'headerTag' => 'div',
-            'options' => ['class' => 'accordion accordion-tabs'],
+            'options' => [
+                'class' => 'accordion accordion-tabs',
+            ],
             'items' => [
                 [
                     'buttonContent' => 'Question<div class="accordion-button-toggle"><i class="ti ti-chevron-down"></i></div>',
                     'content' => '<p class="mb-0">Answer</p>',
                     'active' => true,
                     'encode' => false,
-                    'bodyOptions' => ['class' => 'accordion-body pt-0'],
+                    'bodyOptions' => [
+                        'class' => 'accordion-body pt-0',
+                    ],
                 ],
             ],
         ]);

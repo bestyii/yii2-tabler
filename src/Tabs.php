@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -14,7 +16,10 @@ class Tabs extends Widget
 
     public function run(): string
     {
-        Html::addCssClass($this->options, ['nav' => 'nav', $this->navType]);
+        Html::addCssClass($this->options, [
+            'nav' => 'nav',
+            $this->navType,
+        ]);
         if ($this->card) {
             Html::addCssClass($this->options, 'card-header-tabs');
         }
@@ -47,7 +52,10 @@ class Tabs extends Widget
 
             if ($active) {
                 Html::addCssClass($linkOptions, 'active');
-                Html::addCssClass($paneOptions, ['active' => 'active', 'show' => 'show']);
+                Html::addCssClass($paneOptions, [
+                    'active' => 'active',
+                    'show' => 'show',
+                ]);
             }
 
             $navs[] = Html::tag('li', Html::a((string) $item['label'], '#' . $paneId, $linkOptions), $headerOptions);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use bestyii\tabler\assets\TomSelectAsset;
@@ -34,8 +36,10 @@ class Select extends Widget
         }
 
         $html = Html::dropDownList($this->name, $this->value, $this->items, array_merge(
-            $this->prompt !== null ? ['prompt' => $this->prompt] : [],
-            $this->options
+            $this->prompt !== null ? [
+                'prompt' => $this->prompt,
+            ] : [],
+            $this->options,
         ));
 
         if ($this->enhance) {

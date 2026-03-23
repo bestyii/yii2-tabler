@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use bestyii\tabler\assets\TypedAsset;
@@ -22,14 +24,20 @@ class Typed extends Widget
 
         $content = '';
         if ($this->prefix !== null) {
-            $content .= Html::tag('span', Html::encode($this->prefix), ['class' => 'typed-prefix']);
+            $content .= Html::tag('span', Html::encode($this->prefix), [
+                'class' => 'typed-prefix',
+            ]);
         }
 
         $fallback = $this->strings[0] ?? '';
-        $content .= Html::tag('span', Html::encode((string) $fallback), ['id' => $typedId]);
+        $content .= Html::tag('span', Html::encode((string) $fallback), [
+            'id' => $typedId,
+        ]);
 
         if ($this->suffix !== null) {
-            $content .= Html::tag('span', Html::encode($this->suffix), ['class' => 'typed-suffix']);
+            $content .= Html::tag('span', Html::encode($this->suffix), [
+                'class' => 'typed-suffix',
+            ]);
         }
 
         $this->registerPlugin($typedId);

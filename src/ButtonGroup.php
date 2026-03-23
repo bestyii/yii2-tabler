@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -33,7 +35,9 @@ class ButtonGroup extends Widget
         $items = [];
 
         foreach (array_values($this->items) as $index => $item) {
-            $item = is_array($item) ? $item : ['label' => (string) $item];
+            $item = is_array($item) ? $item : [
+                'label' => (string) $item,
+            ];
             if (($item['visible'] ?? true) === false) {
                 continue;
             }
@@ -70,7 +74,10 @@ class ButtonGroup extends Widget
             'arrow' => $item['arrow'] ?? false,
         ]);
 
-        return Html::tag('div', $toggle . $menu, ['class' => 'btn-group', 'role' => 'group']);
+        return Html::tag('div', $toggle . $menu, [
+            'class' => 'btn-group',
+            'role' => 'group',
+        ]);
     }
 
     private function renderButton(array $item, int $index): string
@@ -126,7 +133,9 @@ class ButtonGroup extends Widget
         if (!empty($item['icon'])) {
             $icon = Icon::widget([
                 'name' => (string) $item['icon'],
-                'options' => ['class' => $label === '' ? '' : 'me-1'],
+                'options' => [
+                    'class' => $label === '' ? '' : 'me-1',
+                ],
             ]);
 
             return $icon . $label;

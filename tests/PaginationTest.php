@@ -13,9 +13,18 @@ class PaginationTest extends TestCase
         $html = Pagination::widget([
             'size' => 'sm',
             'items' => [
-                ['label' => 'Prev', 'disabled' => true],
-                ['label' => '1', 'active' => true],
-                ['label' => '2', 'url' => '/page/2'],
+                [
+                    'label' => 'Prev',
+                    'disabled' => true,
+                ],
+                [
+                    'label' => '1',
+                    'active' => true,
+                ],
+                [
+                    'label' => '2',
+                    'url' => '/page/2',
+                ],
             ],
         ]);
 

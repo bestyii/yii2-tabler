@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\base\InvalidConfigException;
@@ -8,7 +10,9 @@ use yii\helpers\Html;
 class Nav extends Widget
 {
     public array $items = [];
-    public array $options = ['class' => 'navbar-nav'];
+    public array $options = [
+        'class' => 'navbar-nav',
+    ];
     public bool $encodeLabels = false;
 
     public function run(): string
@@ -77,8 +81,14 @@ class Nav extends Widget
             return $label;
         }
 
-        return Html::tag('span', Icon::widget(['name' => (string) $item['icon']]), ['class' => 'nav-link-icon d-md-none d-lg-inline-block']) .
-            Html::tag('span', $label, ['class' => 'nav-link-title']);
+        return Html::tag('span', Icon::widget([
+            'name' => (string) $item['icon'],
+        ]), [
+            'class' => 'nav-link-icon d-md-none d-lg-inline-block',
+        ]) .
+            Html::tag('span', $label, [
+                'class' => 'nav-link-title',
+            ]);
     }
 
     private function renderDropdown(array $items): string
@@ -112,7 +122,9 @@ class Nav extends Widget
             $content[] = Html::tag('li', Html::a($label, $item['url'] ?? '#', $linkOptions), $options);
         }
 
-        return Html::tag('ul', implode("\n", $content), ['class' => 'dropdown-menu']);
+        return Html::tag('ul', implode("\n", $content), [
+            'class' => 'dropdown-menu',
+        ]);
     }
 
     private function isItemActive(array $item): bool
@@ -132,7 +144,7 @@ class Nav extends Widget
 
         $queryParams = \Yii::$app->request->queryParams;
         foreach (array_slice($item['url'], 1, null, true) as $name => $value) {
-            if ($value !== null && (!array_key_exists($name, $queryParams) || $queryParams[$name] != $value)) {
+            if ($value !== null && (!array_key_exists($name, $queryParams) || $queryParams[$name] !== $value)) {
                 return false;
             }
         }

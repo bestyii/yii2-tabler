@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -31,12 +33,18 @@ class SwitchIcon extends Widget
 
         $content = Html::tag('span', Icon::widget([
             'name' => $this->icon,
-        ]), ['class' => 'switch-icon-a text-' . $this->inactiveColor]);
+        ]), [
+            'class' => 'switch-icon-a text-' . $this->inactiveColor,
+        ]);
 
         $content .= Html::tag('span', Icon::widget([
             'name' => $activeIcon,
-            'options' => $activeIconClass !== null ? ['class' => $activeIconClass] : [],
-        ]), ['class' => 'switch-icon-b text-' . $this->activeColor]);
+            'options' => $activeIconClass !== null ? [
+                'class' => $activeIconClass,
+            ] : [],
+        ]), [
+            'class' => 'switch-icon-b text-' . $this->activeColor,
+        ]);
 
         return Html::tag('button', $content, $this->options);
     }

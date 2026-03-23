@@ -12,8 +12,12 @@ class CarouselTest extends TestCase
     {
         $html = Carousel::widget([
             'items' => [
-                ['content' => '<div>Slide 1</div>'],
-                ['content' => '<div>Slide 2</div>'],
+                [
+                    'content' => '<div>Slide 1</div>',
+                ],
+                [
+                    'content' => '<div>Slide 2</div>',
+                ],
             ],
         ]);
 

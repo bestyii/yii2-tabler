@@ -13,9 +13,19 @@ class ButtonGroupTest extends TestCase
         $html = ButtonGroup::widget([
             'radio' => true,
             'items' => [
-                ['label' => 'Overview', 'active' => true],
-                ['label' => 'Queue'],
-                ['label' => 'More', 'items' => [['label' => 'Settings']]],
+                [
+                    'label' => 'Overview',
+                    'active' => true,
+                ],
+                [
+                    'label' => 'Queue',
+                ],
+                [
+                    'label' => 'More',
+                    'items' => [[
+                        'label' => 'Settings',
+                    ]],
+                ],
             ],
         ]);
 

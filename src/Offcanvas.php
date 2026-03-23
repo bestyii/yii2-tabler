@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -27,7 +29,10 @@ class Offcanvas extends Widget
         }
 
         $this->options['id'] ??= $this->getId();
-        Html::addCssClass($this->options, ['offcanvas' => 'offcanvas', 'placement' => 'offcanvas-' . $this->placement]);
+        Html::addCssClass($this->options, [
+            'offcanvas' => 'offcanvas',
+            'placement' => 'offcanvas-' . $this->placement,
+        ]);
         if ($this->blur) {
             Html::addCssClass($this->options, 'offcanvas-blur');
             $this->options['data-bs-backdrop'] = 'true';
@@ -49,10 +54,14 @@ class Offcanvas extends Widget
                     'data-bs-dismiss' => 'offcanvas',
                     'aria-label' => 'Close',
                 ]),
-                ['class' => 'offcanvas-header']
+                [
+                    'class' => 'offcanvas-header',
+                ],
             );
         }
-        $content[] = Html::tag('div', $body, ['class' => 'offcanvas-body']);
+        $content[] = Html::tag('div', $body, [
+            'class' => 'offcanvas-body',
+        ]);
 
         return Html::tag('div', implode("\n", $content), $this->options);
     }

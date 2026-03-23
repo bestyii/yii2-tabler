@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -95,20 +97,28 @@ class Card extends Widget
         $text = '';
 
         if ($this->title !== null && $this->title !== '') {
-            $text .= Html::tag('h3', Html::encode($this->title), ['class' => 'card-title']);
+            $text .= Html::tag('h3', Html::encode($this->title), [
+                'class' => 'card-title',
+            ]);
         }
 
         if ($this->subtitle !== null && $this->subtitle !== '') {
-            $text .= Html::tag('div', Html::encode($this->subtitle), ['class' => 'card-subtitle text-secondary']);
+            $text .= Html::tag('div', Html::encode($this->subtitle), [
+                'class' => 'card-subtitle text-secondary',
+            ]);
         }
 
         $sections[] = Html::tag('div', $text);
 
         if ($this->tools !== null) {
             $tools = is_array($this->tools)
-                ? Html::tag('div', implode("\n", array_map(static fn($item): string => (string) $item, $this->tools)), ['class' => 'btn-list'])
+                ? Html::tag('div', implode("\n", array_map(static fn($item): string => (string) $item, $this->tools)), [
+                    'class' => 'btn-list',
+                ])
                 : (string) $this->tools;
-            $sections[] = Html::tag('div', $tools, ['class' => 'card-actions']);
+            $sections[] = Html::tag('div', $tools, [
+                'class' => 'card-actions',
+            ]);
         }
 
         return Html::tag('div', implode("\n", $sections), $this->headerOptions);

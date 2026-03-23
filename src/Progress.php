@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -85,7 +87,9 @@ class Progress extends Widget
 
         $label = $config['label'] ?? null;
         $content = $label !== null && $label !== ''
-            ? Html::tag('span', Html::encode((string) $label), ['class' => 'progress-bar-label'])
+            ? Html::tag('span', Html::encode((string) $label), [
+                'class' => 'progress-bar-label',
+            ])
             : '';
 
         return Html::tag('div', $content, $options);

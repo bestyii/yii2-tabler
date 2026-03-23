@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -57,7 +59,9 @@ class Carousel extends Widget
             $buttons[] = Html::tag('button', '', $options);
         }
 
-        return Html::tag('div', implode('', $buttons), ['class' => 'carousel-indicators']);
+        return Html::tag('div', implode('', $buttons), [
+            'class' => 'carousel-indicators',
+        ]);
     }
 
     private function renderItems(): string
@@ -72,7 +76,9 @@ class Carousel extends Widget
 
             $body = (string) ($item['content'] ?? '');
             if (isset($item['caption'])) {
-                $body .= Html::tag('div', (string) $item['caption'], ['class' => 'carousel-caption d-none d-md-block']);
+                $body .= Html::tag('div', (string) $item['caption'], [
+                    'class' => 'carousel-caption d-none d-md-block',
+                ]);
             }
 
             $items[] = Html::tag('div', $body, $itemOptions);
@@ -83,26 +89,38 @@ class Carousel extends Widget
 
     private function renderControls(): string
     {
-        $previous = Html::tag('button',
-            Html::tag('span', '', ['class' => 'carousel-control-prev-icon', 'aria-hidden' => 'true'])
-            . Html::tag('span', 'Previous', ['class' => 'visually-hidden']),
+        $previous = Html::tag(
+            'button',
+            Html::tag('span', '', [
+                'class' => 'carousel-control-prev-icon',
+                'aria-hidden' => 'true',
+            ])
+            . Html::tag('span', 'Previous', [
+                'class' => 'visually-hidden',
+            ]),
             array_merge($this->controlOptions, [
                 'class' => trim(($this->controlOptions['class'] ?? '') . ' carousel-control-prev'),
                 'type' => 'button',
                 'data-bs-target' => '#' . $this->options['id'],
                 'data-bs-slide' => 'prev',
-            ])
+            ]),
         );
 
-        $next = Html::tag('button',
-            Html::tag('span', '', ['class' => 'carousel-control-next-icon', 'aria-hidden' => 'true'])
-            . Html::tag('span', 'Next', ['class' => 'visually-hidden']),
+        $next = Html::tag(
+            'button',
+            Html::tag('span', '', [
+                'class' => 'carousel-control-next-icon',
+                'aria-hidden' => 'true',
+            ])
+            . Html::tag('span', 'Next', [
+                'class' => 'visually-hidden',
+            ]),
             array_merge($this->controlOptions, [
                 'class' => trim(($this->controlOptions['class'] ?? '') . ' carousel-control-next'),
                 'type' => 'button',
                 'data-bs-target' => '#' . $this->options['id'],
                 'data-bs-slide' => 'next',
-            ])
+            ]),
         );
 
         return $previous . $next;

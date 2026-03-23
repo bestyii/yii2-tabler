@@ -12,9 +12,18 @@ class TrackingTest extends TestCase
     {
         $html = Tracking::widget([
             'blocks' => [
-                ['status' => 'success', 'title' => 'Operational'],
-                ['status' => 'warning', 'title' => 'High load'],
-                ['status' => 'danger', 'title' => 'Downtime'],
+                [
+                    'status' => 'success',
+                    'title' => 'Operational',
+                ],
+                [
+                    'status' => 'warning',
+                    'title' => 'High load',
+                ],
+                [
+                    'status' => 'danger',
+                    'title' => 'Downtime',
+                ],
             ],
         ]);
 

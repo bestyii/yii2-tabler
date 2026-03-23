@@ -14,10 +14,15 @@ class ChartTest extends TestCase
     {
         $html = Chart::widget([
             'series' => [
-                ['name' => 'Completed', 'data' => [12, 18, 24]],
+                [
+                    'name' => 'Completed',
+                    'data' => [12, 18, 24],
+                ],
             ],
             'chartOptions' => [
-                'chart' => ['type' => 'line'],
+                'chart' => [
+                    'type' => 'line',
+                ],
             ],
         ]);
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -25,8 +27,12 @@ class EmptyState extends Widget
         }
 
         $content = $this->renderVisual();
-        $content .= Html::tag('p', Html::encode($this->title), ['class' => 'empty-title']);
-        $content .= Html::tag('p', Html::encode($this->subtitle), ['class' => 'empty-subtitle text-secondary']);
+        $content .= Html::tag('p', Html::encode($this->title), [
+            'class' => 'empty-title',
+        ]);
+        $content .= Html::tag('p', Html::encode($this->subtitle), [
+            'class' => 'empty-subtitle text-secondary',
+        ]);
 
         $action = $this->action;
         if ($action === null && $this->buttonLabel !== null && $this->buttonLabel !== '') {
@@ -39,7 +45,9 @@ class EmptyState extends Widget
         }
 
         if ($action !== null && $action !== '') {
-            $content .= Html::tag('div', $action, ['class' => 'empty-action']);
+            $content .= Html::tag('div', $action, [
+                'class' => 'empty-action',
+            ]);
         }
 
         return Html::tag('div', $content, $this->options);
@@ -48,13 +56,19 @@ class EmptyState extends Widget
     private function renderVisual(): string
     {
         if ($this->iconText !== null && $this->iconText !== '') {
-            return Html::tag('div', Html::encode($this->iconText), ['class' => 'empty-header']);
+            return Html::tag('div', Html::encode($this->iconText), [
+                'class' => 'empty-header',
+            ]);
         }
 
         if ($this->icon === null || $this->icon === '') {
             return '';
         }
 
-        return Html::tag('div', Icon::widget(['name' => $this->icon]), ['class' => 'empty-icon']);
+        return Html::tag('div', Icon::widget([
+            'name' => $this->icon,
+        ]), [
+            'class' => 'empty-icon',
+        ]);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -39,7 +41,9 @@ class AvatarList extends Widget
     private function renderAvatar(array|string $item): string
     {
         if (is_string($item)) {
-            $item = ['text' => $item];
+            $item = [
+                'text' => $item,
+            ];
         }
 
         return Avatar::widget(array_merge($this->avatarDefaults, $item, [

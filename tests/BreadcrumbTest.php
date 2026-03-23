@@ -12,8 +12,15 @@ class BreadcrumbTest extends TestCase
     {
         $html = Breadcrumb::widget([
             'items' => [
-                ['label' => 'Dashboard', 'url' => '/dashboard', 'icon' => 'layout-dashboard'],
-                ['label' => 'Tables', 'active' => true],
+                [
+                    'label' => 'Dashboard',
+                    'url' => '/dashboard',
+                    'icon' => 'layout-dashboard',
+                ],
+                [
+                    'label' => 'Tables',
+                    'active' => true,
+                ],
             ],
         ]);
 

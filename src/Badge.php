@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -13,7 +15,9 @@ class Badge extends Widget
 
     public function run(): string
     {
-        Html::addCssClass($this->options, ['badge' => 'badge']);
+        Html::addCssClass($this->options, [
+            'badge' => 'badge',
+        ]);
         Html::addCssClass($this->options, $this->lite ? 'bg-' . $this->color . '-lt' : 'bg-' . $this->color);
 
         return Html::tag('span', Html::encode($this->text), $this->options);

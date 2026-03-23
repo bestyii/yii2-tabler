@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @link http://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -10,18 +12,16 @@ namespace bestyii\tabler\assets;
 use bestyii\tabler\assets\BaseAssetBundle as AssetBundle;
 
 /**
- * JsVectorMapAsset
- *
  * @author BestYii
  */
 class JsVectorMapAsset extends AssetBundle
 {
-    public $sourcePath = '@npm/jsvectormap/dist';
+    public $sourcePath = '@npm/tabler--core/dist/libs/jsvectormap/dist';
     public $css = [
-        'css/jsvectormap.min.css',
+        'jsvectormap.min.css',
     ];
     public $js = [
-        'js/jsvectormap.min.js',
+        'jsvectormap.min.js',
         'maps/world.js',
         'maps/world-merc.js',
     ];

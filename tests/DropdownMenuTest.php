@@ -14,11 +14,25 @@ class DropdownMenuTest extends TestCase
             'show' => true,
             'dark' => true,
             'items' => [
-                ['type' => 'header', 'label' => 'Actions'],
-                ['label' => 'Open preview', 'icon' => 'layout', 'badge' => '12'],
+                [
+                    'type' => 'header',
+                    'label' => 'Actions',
+                ],
+                [
+                    'label' => 'Open preview',
+                    'icon' => 'layout',
+                    'badge' => '12',
+                ],
                 '-',
-                ['type' => 'checkbox', 'label' => 'Keep pinned', 'checked' => true],
-                ['label' => 'Danger', 'danger' => true],
+                [
+                    'type' => 'checkbox',
+                    'label' => 'Keep pinned',
+                    'checked' => true,
+                ],
+                [
+                    'label' => 'Danger',
+                    'danger' => true,
+                ],
             ],
         ]);
 

@@ -14,11 +14,23 @@ class TableTest extends TestCase
             'striped' => true,
             'cardTable' => true,
             'rows' => [
-                ['owner' => 'Alice', 'status' => 'Ready'],
+                [
+                    'owner' => 'Alice',
+                    'status' => 'Ready',
+                ],
             ],
             'columns' => [
-                ['attribute' => 'owner', 'label' => 'Owner', 'rowHeader' => true, 'encode' => true],
-                ['attribute' => 'status', 'label' => 'Status', 'encode' => true],
+                [
+                    'attribute' => 'owner',
+                    'label' => 'Owner',
+                    'rowHeader' => true,
+                    'encode' => true,
+                ],
+                [
+                    'attribute' => 'status',
+                    'label' => 'Status',
+                    'encode' => true,
+                ],
             ],
         ]);
 

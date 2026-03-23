@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -19,7 +21,9 @@ class Tracking extends Widget
 
         $blocks = [];
         foreach ($this->blocks as $block) {
-            $blockOptions = ['class' => 'tracking-block'];
+            $blockOptions = [
+                'class' => 'tracking-block',
+            ];
             if (!empty($block['status'])) {
                 Html::addCssClass($blockOptions, 'bg-' . $block['status']);
             }

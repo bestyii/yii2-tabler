@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -27,7 +29,13 @@ class Trending extends Widget
 
         $formatted = number_format((float) $this->value, $this->precision);
         $content = Html::encode($formatted . $this->suffix . ' ')
-            . Icon::widget(['name' => $icon, 'size' => 'sm', 'options' => ['class' => 'ms-0']]);
+            . Icon::widget([
+                'name' => $icon,
+                'size' => 'sm',
+                'options' => [
+                    'class' => 'ms-0',
+                ],
+            ]);
 
         return Html::tag('span', $content, $this->options);
     }

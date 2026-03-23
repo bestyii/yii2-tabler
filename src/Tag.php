@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -30,7 +32,9 @@ class Tag extends Widget
         if ($this->icon !== null && $this->icon !== '') {
             $content = Icon::widget([
                 'name' => $this->icon,
-                'options' => ['class' => 'me-1'],
+                'options' => [
+                    'class' => 'me-1',
+                ],
             ]) . $content;
         }
 

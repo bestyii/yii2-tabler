@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler\assets;
 
 use Yii;
@@ -8,7 +10,7 @@ class BaseAssetBundle extends \yii\web\AssetBundle
 {
     /**
      * 获取资源包内特定文件的 Web 访问 URL
-     * 
+     *
      * @param string $filePath 相对 sourcePath 的文件路径
      * @return string
      */

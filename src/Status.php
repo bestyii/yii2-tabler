@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -14,18 +16,25 @@ class Status extends Widget
 
     public function run(): string
     {
-        Html::addCssClass($this->options, ['status' => 'status', 'color' => 'status-' . $this->color]);
+        Html::addCssClass($this->options, [
+            'status' => 'status',
+            'color' => 'status-' . $this->color,
+        ]);
 
         $content = '';
         if ($this->showDot) {
-            $content .= Html::tag('span', '', ['class' => 'status-dot bg-' . $this->color]);
+            $content .= Html::tag('span', '', [
+                'class' => 'status-dot bg-' . $this->color,
+            ]);
         }
 
         if ($this->text !== null && $this->text !== '') {
             $content .= Html::tag(
                 'span',
                 $this->encodeText ? Html::encode($this->text) : $this->text,
-                ['class' => 'status-text']
+                [
+                    'class' => 'status-text',
+                ],
             );
         }
 

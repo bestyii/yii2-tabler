@@ -12,7 +12,12 @@ class TimelineTest extends TestCase
     {
         $html = Timeline::widget([
             'items' => [
-                ['time' => '10 min ago', 'title' => 'Preview smoke passed', 'description' => 'Docs and preview routes stayed green.', 'icon' => 'check'],
+                [
+                    'time' => '10 min ago',
+                    'title' => 'Preview smoke passed',
+                    'description' => 'Docs and preview routes stayed green.',
+                    'icon' => 'check',
+                ],
             ],
         ]);
 

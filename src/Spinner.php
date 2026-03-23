@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -25,6 +27,8 @@ class Spinner extends Widget
         }
         $this->options['role'] = $this->options['role'] ?? 'status';
 
-        return Html::tag('span', Html::tag('span', Html::encode($this->label), ['class' => 'visually-hidden']), $this->options);
+        return Html::tag('span', Html::tag('span', Html::encode($this->label), [
+            'class' => 'visually-hidden',
+        ]), $this->options);
     }
 }

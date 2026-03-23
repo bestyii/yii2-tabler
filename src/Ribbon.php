@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -34,7 +36,9 @@ class Ribbon extends Widget
         if ($this->icon !== null && $this->icon !== '') {
             $content .= Icon::widget([
                 'name' => $this->icon,
-                'options' => ['class' => $this->text !== null && $this->text !== '' ? 'me-1' : ''],
+                'options' => [
+                    'class' => $this->text !== null && $this->text !== '' ? 'me-1' : '',
+                ],
             ]);
         }
         if ($this->text !== null && $this->text !== '') {

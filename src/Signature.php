@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use bestyii\tabler\assets\SignaturePadAsset;
@@ -36,7 +38,9 @@ class Signature extends Widget
 
         $content = [];
         if ($inputId !== null) {
-            $content[] = Html::hiddenInput($this->name, $this->value, ['id' => $inputId]);
+            $content[] = Html::hiddenInput($this->name, $this->value, [
+                'id' => $inputId,
+            ]);
         }
         if ($clearButtonId !== null) {
             $content[] = Html::button($this->clearLabel, [

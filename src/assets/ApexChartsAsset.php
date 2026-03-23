@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @link http://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -10,13 +12,11 @@ namespace bestyii\tabler\assets;
 use bestyii\tabler\assets\BaseAssetBundle as AssetBundle;
 
 /**
- * ApexChartsAsset
- *
  * @author BestYii
  */
 class ApexChartsAsset extends AssetBundle
 {
-    public $sourcePath = '@npm/apexcharts/dist';
+    public $sourcePath = '@npm/tabler--core/dist/libs/apexcharts/dist';
     public $css = [];
     public $js = [
         'apexcharts.min.js',

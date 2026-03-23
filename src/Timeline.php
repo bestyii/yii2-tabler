@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -28,7 +30,9 @@ class Timeline extends Widget
 
     private function renderItem(array $item): string
     {
-        $iconOptions = ['class' => 'timeline-event-icon'];
+        $iconOptions = [
+            'class' => 'timeline-event-icon',
+        ];
         if (!empty($item['iconColor'])) {
             Html::addCssClass($iconOptions, 'bg-' . $item['iconColor'] . '-lt');
         }
@@ -41,21 +45,33 @@ class Timeline extends Widget
 
         $body = '';
         if ($time !== '') {
-            $body .= Html::tag('div', Html::encode($time), ['class' => 'text-secondary float-end']);
+            $body .= Html::tag('div', Html::encode($time), [
+                'class' => 'text-secondary float-end',
+            ]);
         }
         if ($title !== '') {
             $body .= Html::tag('h4', $encode ? Html::encode($title) : $title);
         }
         if ($description !== '') {
-            $body .= Html::tag('p', $encode ? Html::encode($description) : $description, ['class' => 'text-secondary']);
+            $body .= Html::tag('p', $encode ? Html::encode($description) : $description, [
+                'class' => 'text-secondary',
+            ]);
         }
         if ($content !== null && $content !== '') {
             $body .= (string) $content;
         }
 
-        $card = Html::tag('div', Html::tag('div', $body, ['class' => 'card-body']), ['class' => 'card timeline-event-card']);
-        $icon = Html::tag('div', Icon::widget(['name' => (string) ($item['icon'] ?? 'circle')]), $iconOptions);
+        $card = Html::tag('div', Html::tag('div', $body, [
+            'class' => 'card-body',
+        ]), [
+            'class' => 'card timeline-event-card',
+        ]);
+        $icon = Html::tag('div', Icon::widget([
+            'name' => (string) ($item['icon'] ?? 'circle'),
+        ]), $iconOptions);
 
-        return Html::tag('li', $icon . $card, ['class' => 'timeline-event']);
+        return Html::tag('li', $icon . $card, [
+            'class' => 'timeline-event',
+        ]);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -13,14 +15,20 @@ class PageHeader extends Widget
 
     public function run(): string
     {
-        Html::addCssClass($this->options, ['page-header' => 'page-header']);
+        Html::addCssClass($this->options, [
+            'page-header' => 'page-header',
+        ]);
 
         $parts = [];
         if ($this->preTitle) {
-            $parts[] = Html::tag('div', Html::encode($this->preTitle), ['class' => 'page-pretitle']);
+            $parts[] = Html::tag('div', Html::encode($this->preTitle), [
+                'class' => 'page-pretitle',
+            ]);
         }
 
-        $parts[] = Html::tag('h2', Html::encode($this->title), ['class' => 'page-title']);
+        $parts[] = Html::tag('h2', Html::encode($this->title), [
+            'class' => 'page-title',
+        ]);
 
         if ($this->content !== null && $this->content !== '') {
             $parts[] = $this->content;

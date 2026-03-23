@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -50,7 +52,9 @@ class Avatar extends Widget
         $content = '';
         if ($this->url === null || $this->url === '') {
             if ($this->icon !== null && $this->icon !== '') {
-                $content = Icon::widget(['name' => $this->icon]);
+                $content = Icon::widget([
+                    'name' => $this->icon,
+                ]);
             } elseif ($this->initials !== null && $this->initials !== '') {
                 $content = Html::encode($this->initials);
             }

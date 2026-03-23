@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -20,7 +22,9 @@ class StatusIndicator extends Widget
             Html::addCssClass($this->options, 'status-indicator-animated');
         }
 
-        $circle = Html::tag('span', '', ['class' => 'status-indicator-circle']);
+        $circle = Html::tag('span', '', [
+            'class' => 'status-indicator-circle',
+        ]);
 
         return Html::tag('span', $circle . $circle . $circle, $this->options);
     }

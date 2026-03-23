@@ -15,7 +15,9 @@ class AvatarTest extends TestCase
             'size' => 'sm',
             'shape' => 'circle',
             'status' => 'success',
-            'options' => ['class' => 'me-2'],
+            'options' => [
+                'class' => 'me-2',
+            ],
         ]);
 
         $this->assertStringContainsString('avatar avatar-sm', $html);

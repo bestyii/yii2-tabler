@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use bestyii\tabler\assets\TablerIconsAsset;
@@ -19,7 +21,10 @@ class Icon extends Widget
         }
 
         TablerIconsAsset::register($this->getView());
-        Html::addCssClass($this->options, ['icon' => 'ti', 'icon-name' => 'ti-' . $this->name]);
+        Html::addCssClass($this->options, [
+            'icon' => 'ti',
+            'icon-name' => 'ti-' . $this->name,
+        ]);
         if ($this->size !== null && $this->size !== '') {
             Html::addCssClass($this->options, 'icon-' . $this->size);
         }

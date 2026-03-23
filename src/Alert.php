@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -28,7 +30,10 @@ class Alert extends Widget
             $body .= $this->body;
         }
 
-        Html::addCssClass($this->options, ['alert' => 'alert', 'type' => 'alert-' . $this->type]);
+        Html::addCssClass($this->options, [
+            'alert' => 'alert',
+            'type' => 'alert-' . $this->type,
+        ]);
         if ($this->important) {
             Html::addCssClass($this->options, 'alert-important');
         }
@@ -39,19 +44,29 @@ class Alert extends Widget
 
         $bodyHtml = [];
         if ($this->title !== null && $this->title !== '') {
-            $bodyHtml[] = Html::tag('h4', Html::encode($this->title), ['class' => 'alert-title']);
+            $bodyHtml[] = Html::tag('h4', Html::encode($this->title), [
+                'class' => 'alert-title',
+            ]);
         }
         if ($body !== '') {
-            $bodyHtml[] = Html::tag('div', $body, ['class' => 'text-secondary']);
+            $bodyHtml[] = Html::tag('div', $body, [
+                'class' => 'text-secondary',
+            ]);
         }
 
         $content = implode("\n", $bodyHtml);
         if ($this->icon !== null && $this->icon !== '') {
             $content = Html::tag(
                 'div',
-                Html::tag('div', Icon::widget(['name' => $this->icon]), ['class' => 'alert-icon']) .
+                Html::tag('div', Icon::widget([
+                    'name' => $this->icon,
+                ]), [
+                    'class' => 'alert-icon',
+                ]) .
                 Html::tag('div', $content),
-                ['class' => 'd-flex']
+                [
+                    'class' => 'd-flex',
+                ],
             );
         }
 

@@ -15,7 +15,10 @@ class SelectTest extends TestCase
         $html = Select::widget([
             'name' => 'plan',
             'value' => 'team',
-            'items' => ['starter' => 'Starter', 'team' => 'Team'],
+            'items' => [
+                'starter' => 'Starter',
+                'team' => 'Team',
+            ],
             'prompt' => 'Choose a scope',
         ]);
 

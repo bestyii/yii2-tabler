@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use bestyii\tabler\assets\DropzoneAsset;
@@ -27,22 +29,33 @@ class Dropzone extends Widget
 
         $content = [];
         if ($this->renderFallback) {
-            $fallbackOptions = ['name' => $this->name, 'type' => 'file'];
+            $fallbackOptions = [
+                'name' => $this->name,
+                'type' => 'file',
+            ];
             if ($this->multiple) {
                 $fallbackOptions['multiple'] = true;
             }
-            $content[] = Html::tag('div', Html::tag('input', '', $fallbackOptions), ['class' => 'fallback']);
+            $content[] = Html::tag('div', Html::tag('input', '', $fallbackOptions), [
+                'class' => 'fallback',
+            ]);
         }
 
         if (($this->messageTitle ?? '') !== '' || ($this->messageDescription ?? '') !== '') {
             $message = '';
             if (($this->messageTitle ?? '') !== '') {
-                $message .= Html::tag('h3', Html::encode((string) $this->messageTitle), ['class' => 'dropzone-msg-title']);
+                $message .= Html::tag('h3', Html::encode((string) $this->messageTitle), [
+                    'class' => 'dropzone-msg-title',
+                ]);
             }
             if (($this->messageDescription ?? '') !== '') {
-                $message .= Html::tag('span', Html::encode((string) $this->messageDescription), ['class' => 'dropzone-msg-desc']);
+                $message .= Html::tag('span', Html::encode((string) $this->messageDescription), [
+                    'class' => 'dropzone-msg-desc',
+                ]);
             }
-            $content[] = Html::tag('div', $message, ['class' => 'dz-message']);
+            $content[] = Html::tag('div', $message, [
+                'class' => 'dz-message',
+            ]);
         }
 
         $this->registerPlugin();

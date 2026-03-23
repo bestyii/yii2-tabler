@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -33,7 +35,10 @@ class Accordion extends Widget
             Html::addCssClass($itemOptions, 'accordion-item');
             Html::addCssClass($headerOptions, 'accordion-header');
             Html::addCssClass($bodyOptions, 'accordion-body');
-            Html::addCssClass($collapseOptions, ['accordion-collapse' => 'accordion-collapse', 'collapse' => 'collapse']);
+            Html::addCssClass($collapseOptions, [
+                'accordion-collapse' => 'accordion-collapse',
+                'collapse' => 'collapse',
+            ]);
             Html::addCssClass($buttonOptions, 'accordion-button');
 
             $active = !empty($item['active']);
@@ -70,13 +75,15 @@ class Accordion extends Widget
             $header = Html::tag(
                 $headerTag,
                 Html::tag('button', $buttonContent, $buttonOptions),
-                array_merge($headerOptions, ['id' => $headingId])
+                array_merge($headerOptions, [
+                    'id' => $headingId,
+                ]),
             );
 
             $body = Html::tag(
                 'div',
                 Html::tag('div', (string) ($item['content'] ?? ''), $bodyOptions),
-                $collapseOptions
+                $collapseOptions,
             );
 
             $items[] = Html::tag('div', $header . $body, $itemOptions);

@@ -12,8 +12,15 @@ class TabsTest extends TestCase
     {
         $html = Tabs::widget([
             'items' => [
-                ['label' => 'Overview', 'content' => 'Panel A', 'active' => true],
-                ['label' => 'Activity', 'content' => 'Panel B'],
+                [
+                    'label' => 'Overview',
+                    'content' => 'Panel A',
+                    'active' => true,
+                ],
+                [
+                    'label' => 'Activity',
+                    'content' => 'Panel B',
+                ],
             ],
         ]);
 

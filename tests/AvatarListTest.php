@@ -13,8 +13,14 @@ class AvatarListTest extends TestCase
         $html = AvatarList::widget([
             'stacked' => true,
             'items' => [
-                ['text' => 'BY', 'color' => 'blue'],
-                ['text' => 'QA', 'color' => 'green'],
+                [
+                    'text' => 'BY',
+                    'color' => 'blue',
+                ],
+                [
+                    'text' => 'QA',
+                    'color' => 'green',
+                ],
             ],
             'placeholderText' => '+1',
         ]);

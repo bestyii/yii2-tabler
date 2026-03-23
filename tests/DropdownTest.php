@@ -14,9 +14,17 @@ class DropdownTest extends TestCase
             'align' => 'end',
             'card' => true,
             'items' => [
-                ['label' => 'Profile', 'icon' => 'user', 'url' => '/profile'],
+                [
+                    'label' => 'Profile',
+                    'icon' => 'user',
+                    'url' => '/profile',
+                ],
                 '-',
-                ['label' => 'Settings', 'url' => '/settings', 'active' => true],
+                [
+                    'label' => 'Settings',
+                    'url' => '/settings',
+                    'active' => true,
+                ],
             ],
         ]);
 

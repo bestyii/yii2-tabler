@@ -16,7 +16,10 @@ class FullcalendarTest extends TestCase
             'calendarOptions' => [
                 'initialView' => 'dayGridMonth',
                 'events' => [
-                    ['title' => 'Release cut', 'start' => '2026-03-18'],
+                    [
+                        'title' => 'Release cut',
+                        'start' => '2026-03-18',
+                    ],
                 ],
             ],
         ]);

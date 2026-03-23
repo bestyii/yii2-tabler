@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use bestyii\tabler\assets\LitepickerAsset;
@@ -32,9 +34,15 @@ class Datepicker extends Widget
             $html = Html::textInput($this->name, $this->value, $this->options);
 
             if ($this->withIcon) {
-                $addon = Html::tag('span', Icon::widget(['name' => $this->icon]), ['class' => 'input-icon-addon']);
+                $addon = Html::tag('span', Icon::widget([
+                    'name' => $this->icon,
+                ]), [
+                    'class' => 'input-icon-addon',
+                ]);
                 $wrapperClass = $this->prependIcon ? 'input-icon input-icon-start' : 'input-icon';
-                $html = Html::tag('div', $this->prependIcon ? $addon . $html : $html . $addon, ['class' => $wrapperClass]);
+                $html = Html::tag('div', $this->prependIcon ? $addon . $html : $html . $addon, [
+                    'class' => $wrapperClass,
+                ]);
             }
         }
 

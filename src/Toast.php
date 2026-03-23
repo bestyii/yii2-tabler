@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use yii\helpers\Html;
@@ -31,7 +33,9 @@ class Toast extends Widget
             $content[] = $header;
         }
         if ($this->body !== null && $this->body !== '') {
-            $content[] = Html::tag('div', $this->body, ['class' => 'toast-body']);
+            $content[] = Html::tag('div', $this->body, [
+                'class' => 'toast-body',
+            ]);
         }
 
         return Html::tag('div', implode("\n", $content), $this->options);
@@ -48,17 +52,23 @@ class Toast extends Widget
             $content .= Avatar::widget([
                 'src' => $this->avatar,
                 'size' => 'xs',
-                'options' => ['class' => 'me-2'],
+                'options' => [
+                    'class' => 'me-2',
+                ],
             ]);
         } elseif ($this->icon !== null && $this->icon !== '') {
             $content .= Icon::widget([
                 'name' => $this->icon,
-                'options' => ['class' => 'me-2'],
+                'options' => [
+                    'class' => 'me-2',
+                ],
             ]);
         }
 
         if ($this->title !== null && $this->title !== '') {
-            $content .= Html::tag('strong', Html::encode($this->title), ['class' => 'me-auto']);
+            $content .= Html::tag('strong', Html::encode($this->title), [
+                'class' => 'me-auto',
+            ]);
         }
         if ($this->subtitle !== null && $this->subtitle !== '') {
             $content .= Html::tag('small', Html::encode($this->subtitle));
@@ -72,6 +82,8 @@ class Toast extends Widget
             ]);
         }
 
-        return Html::tag('div', $content, ['class' => 'toast-header']);
+        return Html::tag('div', $content, [
+            'class' => 'toast-header',
+        ]);
     }
 }

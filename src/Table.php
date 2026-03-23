@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler;
 
 use Closure;
@@ -51,7 +53,7 @@ class Table extends Widget
             $parts[] = Html::tag(
                 'caption',
                 $this->encodeCaption ? Html::encode($this->caption) : $this->caption,
-                []
+                [],
             );
         }
 
@@ -94,7 +96,9 @@ class Table extends Widget
         $rows = [];
 
         if ($this->rows === []) {
-            $emptyCellOptions = array_merge(['colspan' => max(1, count($columns))], $this->emptyCellOptions);
+            $emptyCellOptions = array_merge([
+                'colspan' => max(1, count($columns)),
+            ], $this->emptyCellOptions);
             Html::addCssClass($emptyCellOptions, 'text-secondary');
             $rows[] = Html::tag('tr', Html::tag('td', Html::encode($this->emptyText), $emptyCellOptions));
 
@@ -108,7 +112,9 @@ class Table extends Widget
                 $cellOptions = $this->resolveCellOptions($column, $row, $index);
 
                 if (!empty($column['rowHeader'])) {
-                    $cellOptions = array_merge(['scope' => 'row'], $cellOptions);
+                    $cellOptions = array_merge([
+                        'scope' => 'row',
+                    ], $cellOptions);
                     $cells[] = Html::tag('th', $content, $cellOptions);
                 } else {
                     $cells[] = Html::tag('td', $content, $cellOptions);
@@ -125,7 +131,7 @@ class Table extends Widget
     {
         return array_values(array_filter(
             $this->columns,
-            static fn(array $column): bool => ($column['visible'] ?? true) !== false
+            static fn(array $column): bool => ($column['visible'] ?? true) !== false,
         ));
     }
 

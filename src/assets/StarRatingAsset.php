@@ -1,15 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bestyii\tabler\assets;
 
 use bestyii\tabler\assets\BaseAssetBundle as AssetBundle;
 
-/**
- * StarRatingAsset
- */
 class StarRatingAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/star-rating.js/dist';
+    public $sourcePath = '@npm/tabler--core/dist/libs/star-rating.js/dist';
 
     public $css = [
         'star-rating.min.css',
