@@ -13,6 +13,7 @@ package: bestyii/yii2-tabler
 # Breadcrumb
 
 `bestyii\tabler\Breadcrumb` renders a Bootstrap 5 / Tabler breadcrumb trail with optional icons and active items.
+If you are migrating from `yii2-bootstrap5`, the package also exposes `bestyii\tabler\Breadcrumbs` as a compatibility alias.
 
 ## Demo
 

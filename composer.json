@@ -36,25 +36,27 @@
       "bestyii\\tabler\\": "src"
     }
   },
-  "scripts": {
-    "cs": "ecs check",
-    "cs-fix": "ecs check --fix",
-    "static": "phpstan analyse src tests --memory-limit=512M --autoload-file=phpstan-bootstrap.php",
-    "tests": "phpunit"
+  "autoload-dev": {
+    "psr-4": {
+      "bestyii\\tabler\\tests\\": "tests"
+    }
   },
   "config": {
     "allow-plugins": {
       "yiisoft/yii2-composer": true
-    }
+    },
+    "sort-packages": true
   },
-  "repositories": {
-    "asset": {
+  "repositories": [
+    {
       "type": "composer",
       "url": "https://asset-packagist.cn"
-    },
-    "packagist-aliyun": {
-      "type": "composer",
-      "url": "https://mirrors.tencent.com/composer/"
     }
+  ],
+  "scripts": {
+    "cs": "@php vendor/bin/ecs check src tests --ansi",
+    "cs-fix": "@php vendor/bin/ecs check src tests --fix --ansi",
+    "static": "@php vendor/bin/phpstan analyse -c phpstan.neon.dist --memory-limit=512M",
+    "tests": "@php vendor/bin/phpunit -c phpunit.xml.dist --colors=always"
   }
 }

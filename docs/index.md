@@ -17,7 +17,13 @@ This is the local-first docs bootstrap for the package.
 - Preview work starts from upstream mirror mode
 - Hybrid validation pages prove the current widget layer before remote diff automation matters
 
+[与 yii2-bootstrap5 的对比](compare-with-yii2-bootstrap5)
+
 [Button component](components/button)
+
+[ActiveForm component](components/active-form)
+
+[ActiveField component](components/active-field)
 
 [Alert component](components/alert)
 
@@ -31,7 +37,11 @@ This is the local-first docs bootstrap for the package.
 
 [Breadcrumb component](components/breadcrumb)
 
+[ButtonDropdown component](components/button-dropdown)
+
 [ButtonGroup component](components/button-group)
+
+[ButtonToolbar component](components/button-toolbar)
 
 [Card component](components/card)
 
@@ -105,7 +115,13 @@ This is the local-first docs bootstrap for the package.
 
 [Modal component](components/modal)
 
+[NavBar component](components/nav-bar)
+
 [Pagination component](components/pagination)
+
+[LinkPager component](components/link-pager)
+
+[Popover component](components/popover)
 
 [Status component](components/status)
 
@@ -118,6 +134,8 @@ This is the local-first docs bootstrap for the package.
 [SwitchIcon component](components/switch-icon)
 
 [Tag component](components/tag)
+
+[ToggleButtonGroup component](components/toggle-button-group)
 
 ## Validation Pages
 

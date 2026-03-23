@@ -6,6 +6,7 @@ namespace bestyii\tabler\tests;
 
 use Yii;
 use yii\web\AssetBundle;
+use yii\web\View;
 
 class AssetBundleTest extends TestCase
 {
@@ -38,6 +39,7 @@ class AssetBundleTest extends TestCase
     public function testAssetBundlesCanBeRegisteredAndPublished(): void
     {
         $view = Yii::$app->getView();
+        self::assertInstanceOf(View::class, $view);
 
         foreach ($this->assetBundleClasses() as $class) {
             /** @var AssetBundle $bundle */
@@ -70,8 +72,8 @@ class AssetBundleTest extends TestCase
     private function localAssetFiles(AssetBundle $bundle): array
     {
         return array_values(array_filter(
-            array_merge($bundle->css ?? [], $bundle->js ?? []),
-            static fn(string $file): bool => $file !== '',
+            array_merge($bundle->css, $bundle->js),
+            static fn(array|string $file): bool => is_string($file) && $file !== '',
         ));
     }
 }

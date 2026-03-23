@@ -20,10 +20,14 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function tearDown(): void
     {
         parent::tearDown();
+        // @phpstan-ignore-next-line Yii allows an uninitialized app instance between test cases.
         Yii::$app = null;
         Yii::$container = new Container();
     }
 
+    /**
+     * @param array<string, mixed> $config
+     */
     protected function mockWebApplication(array $config = []): void
     {
         FileHelper::createDirectory(dirname(__DIR__, 4) . '/runtime/assets');
