@@ -10,6 +10,13 @@ package: bestyii/yii2-tabler
 
 `bestyii/yii2-tabler` is optimized for backend product work, which means every widget has to be predictable under real data and real templates.
 
+## Component Layers
+
+- The package has two layers: a Parity Layer for bootstrap-like widgets and a Product Layer for richer Tabler-specific components.
+- Parity Layer work should preserve the public API, behavior model and migration expectations of `yiisoft/yii2-bootstrap5` wherever practical.
+- Product Layer work may introduce stronger content contracts, typed shortcuts and explicit asset ownership when the value is clear and documented.
+- Internal refactoring is welcome, but user-facing invention belongs in Product Layer components, not in parity-first widgets.
+
 ## Content Rules
 
 - Text properties are safe by default. Names like `title`, `subtitle`, `label`, `emptyText` and similar scalar text fields should render as text.

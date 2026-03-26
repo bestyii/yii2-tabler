@@ -1,7 +1,7 @@
 ---
 title: Yii2 Tabler
-description: Minimal documentation bootstrap for the extension package.
-status: baseline
+description: Product docs, support matrix, migration policies and component catalog for bestyii/yii2-tabler.
+status: maintained
 preview: /preview-lab
 mirror: /preview
 source: docs/index.md
@@ -10,18 +10,21 @@ package: bestyii/yii2-tabler
 
 # Yii2 Tabler
 
-This is the local-first docs bootstrap for the package.
+`bestyii/yii2-tabler` is a local-first component package for modern Yii2 back-office teams. These docs cover product policy, migration expectations, component APIs and preview validation.
 
-- Source of truth lives in `extensions/bestyii/yii2-tabler/docs`
-- The site module only renders these markdown files
-- Preview work starts from upstream mirror mode
-- Hybrid validation pages prove the current widget layer before remote diff automation matters
+## Start Here
 
-[与 yii2-bootstrap5 的对比](compare-with-yii2-bootstrap5)
+[支持策略](support-policy)
+
+[Bootstrap parity policy](parity-policy)
+
+[1.0 roadmap](roadmap-1.0)
 
 [组件契约](component-contracts)
 
-## Core Bootstrap Layer
+[与 yii2-bootstrap5 的对比](compare-with-yii2-bootstrap5)
+
+## Parity Layer
 
 [Button component](components/button)
 
@@ -65,7 +68,7 @@ This is the local-first docs bootstrap for the package.
 
 [ToggleButtonGroup component](components/toggle-button-group)
 
-## Product and Layout
+## Product Layer
 
 [Card component](components/card)
 
@@ -145,7 +148,7 @@ This is the local-first docs bootstrap for the package.
 
 [VectorMap component](components/vector-map)
 
-## Validation Pages
+## Preview Validation
 
 - [Preview lab overview](/preview-lab)
 - [Dashboard hybrid page](/preview-lab/dashboard)

@@ -19,7 +19,7 @@
 基于当前仓库快照，这个包已经提供：
 
 - 62 个顶层类，覆盖 Bootstrap 常用组件、Tabler 后台组件和表单基座。
-- 27 个 Asset Bundle，用于统一管理 Tabler 及其配套前端依赖。
+- 31 个 Asset Bundle，用于统一管理 Tabler 及其配套前端依赖。
 - 59 篇组件文档，位于 `docs/components`。
 - 包级 `phpunit`、`phpstan`、`ecs` 三条质量门禁。
 
@@ -67,8 +67,10 @@ composer require bestyii/yii2-tabler
 
 当前要求：
 
-- PHP `>=8.4`
+- PHP `8.2 - 8.4`
 - Yii2 `~2.0.32`
+
+官方支持策略和兼容承诺见 [`docs/support-policy.md`](docs/support-policy.md)。
 
 ## 快速开始
 
@@ -199,6 +201,14 @@ TablerThemeAsset::register($this);
 
 换句话说，`yii2-tabler` 的定位不是“和 `yii2-bootstrap5` 做功能切分”，而是“以 Tabler 风格重做并扩展 Yii2 的 Bootstrap 组件层”。
 
+## 稳定性与兼容原则
+
+- 包的官方支持线是 PHP `8.2 - 8.4`，面向现代 Yii2 团队，而不是极旧环境。
+- 与 `yii2-bootstrap5` 高度同构的组件优先追求稳定和一致性，不做为了“更优雅”而引入的新概念拆分。
+- 更强的内容契约、资产归属和后台产品能力，优先落在 `Card`、`AdvancedTable`、`Popover` 这类产品层组件里。
+
+详细规则见 [`docs/parity-policy.md`](docs/parity-policy.md) 与 [`docs/support-policy.md`](docs/support-policy.md)。
+
 ## 质量与可维护性
 
 当前包级交付标准包括：
@@ -219,6 +229,9 @@ TablerThemeAsset::register($this);
 ## 文档入口
 
 - 包级文档索引：[`docs/index.md`](docs/index.md)
+- 支持策略：[`docs/support-policy.md`](docs/support-policy.md)
+- Bootstrap parity policy：[`docs/parity-policy.md`](docs/parity-policy.md)
+- 1.0 roadmap：[`docs/roadmap-1.0.md`](docs/roadmap-1.0.md)
 - 组件契约：[`docs/component-contracts.md`](docs/component-contracts.md)
 - 组件文档目录：[`docs/components`](docs/components)
 - 选型参考：[`docs/compare-with-yii2-bootstrap5.md`](docs/compare-with-yii2-bootstrap5.md)
