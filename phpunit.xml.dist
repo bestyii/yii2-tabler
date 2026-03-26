@@ -10,4 +10,22 @@
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+    </source>
+    <coverage includeUncoveredFiles="true"
+              pathCoverage="false"
+              ignoreDeprecatedCodeUnits="true"
+              disableCodeCoverageIgnore="false">
+        <report>
+            <clover outputFile="./runtime/coverage/clover.xml"/>
+            <cobertura outputFile="./runtime/coverage/cobertura.xml"/>
+            <html outputDirectory="./runtime/coverage/html"/>
+            <text outputFile="php://stdout"
+                  showOnlySummary="true"
+                  showUncoveredFiles="false"/>
+        </report>
+    </coverage>
 </phpunit>

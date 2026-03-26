@@ -1,5 +1,7 @@
 # bestyii/yii2-tabler
 
+[![CI](https://github.com/bestyii/yii2-tabler/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/bestyii/yii2-tabler/actions/workflows/build.yml)
+
 `bestyii/yii2-tabler` 是一个面向 Yii2 后台、运营平台和数据管理界面的 Tabler 组件包。
 它不是单纯的 CSS 主题封装，而是把 Tabler 的视觉语言、常见后台部件和前端插件整合成可复用的 Yii2 Widget 与 Asset Bundle。
 从产品目标上，它不应只是一个“Tabler 版补充包”，而应逐步成为 `yiisoft/yii2-bootstrap5` 的上位替代：既覆盖 Bootstrap 常用能力，也提供更丰富的后台组件和更优的视觉表达。
@@ -215,8 +217,24 @@ TablerThemeAsset::register($this);
 
 - 组件文档与源码同仓维护
 - PHPUnit 验证渲染结果与资产发布
+- PHPUnit 覆盖率配置已启用，CI 会在单独的 coverage job 里产出 `runtime/coverage` 报告工件
 - PHPStan 验证静态分析
 - ECS 保持代码风格一致
+
+本地常用命令：
+
+```bash
+composer tests
+composer static
+composer cs
+XDEBUG_MODE=coverage composer coverage
+```
+
+说明：
+
+- `composer tests` 默认带 `--no-coverage`，用于日常快速回归。
+- `composer coverage` 需要 `pcov` 或 `Xdebug` 覆盖率驱动；如果使用 Xdebug，请显式带上 `XDEBUG_MODE=coverage`。
+- 覆盖率报告会写入 `runtime/coverage/`，其中包含 `clover.xml`、`cobertura.xml` 和 HTML 报告。
 
 最近一次补强还加入了 Asset Bundle 一致性测试，用于直接检查：
 

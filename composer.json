@@ -57,6 +57,11 @@
     "cs": "@php vendor/bin/ecs check src tests --ansi",
     "cs-fix": "@php vendor/bin/ecs check src tests --fix --ansi",
     "static": "@php vendor/bin/phpstan analyse -c phpstan.neon.dist --memory-limit=512M",
-    "tests": "@php vendor/bin/phpunit -c phpunit.xml.dist --colors=always"
+    "tests": "@php vendor/bin/phpunit -c phpunit.xml.dist --colors=always --no-coverage",
+    "coverage:prepare": "@php -r \"is_dir('runtime/coverage/html') || mkdir('runtime/coverage/html', 0777, true);\"",
+    "coverage": [
+      "@coverage:prepare",
+      "@php vendor/bin/phpunit -c phpunit.xml.dist --colors=always"
+    ]
   }
 }

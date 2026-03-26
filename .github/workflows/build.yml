@@ -46,4 +46,40 @@ jobs:
                         composer update $DEFAULT_COMPOSER_FLAGS
                     fi
             -   name: Run unit tests
-                run: vendor/bin/phpunit --display-all-issues --colors=always
+                run: vendor/bin/phpunit -c phpunit.xml.dist --display-all-issues --colors=always --no-coverage
+
+    coverage:
+        name: Coverage PHP 8.4-ubuntu-latest
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v4
+            -   name: Install PHP with coverage driver
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: "8.4"
+                    coverage: pcov
+            -   name: Determine composer cache directory
+                id: composer-cache
+                run: echo "COMPOSER_CACHE_DIR=$(composer config cache-dir)" >> $GITHUB_ENV
+            -   name: Cache dependencies composer installed with composer
+                uses: actions/cache@v4
+                with:
+                    path: ${{ env.COMPOSER_CACHE_DIR }}
+                    key: php8.4-coverage-composer-${{ hashFiles('composer.json') }}
+                    restore-keys: php8.4-coverage-composer-
+            -   name: Update composer
+                run: composer self-update
+            -   name: Install dependencies with composer
+                run: composer update $DEFAULT_COMPOSER_FLAGS
+            -   name: Prepare coverage directories
+                run: mkdir -p runtime/coverage/html
+            -   name: Run unit tests with coverage
+                run: vendor/bin/phpunit -c phpunit.xml.dist --display-all-issues --colors=always
+            -   name: Upload coverage artifacts
+                uses: actions/upload-artifact@v4
+                with:
+                    name: phpunit-coverage
+                    path: runtime/coverage
+                    if-no-files-found: error

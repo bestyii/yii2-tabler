@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Lowered the package support floor to PHP 8.2 and aligned CI around 8.2, 8.3 and 8.4.
+- Enabled PHPUnit coverage metadata and added a dedicated CI coverage artifact job plus a README CI badge.
 - Added support policy, parity policy and a 1.0 roadmap to document compatibility and release expectations.
 - Made the package test harness resolve vendor and runtime paths from the package root so standalone clones and temp copies can run the suite reliably.
 - Added explicit product-level component contract documentation.
