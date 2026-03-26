@@ -23,10 +23,6 @@ use bestyii\tabler\PageHeader;
 echo PageHeader::widget([
     'preTitle' => 'Reference',
     'title' => 'Hybrid Widgets',
-    'content' => Badge::widget([
-        'text' => 'Ready',
-        'color' => 'green',
-        'lite' => true,
-    ]),
+    'content' => Badge::green('Ready', lite: true),
 ]);
 ```

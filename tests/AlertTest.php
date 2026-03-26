@@ -23,4 +23,34 @@ class AlertTest extends TestCase
         $this->assertStringContainsString('ti-check', $html);
         $this->assertStringContainsString('btn-close', $html);
     }
+
+    public function testAlertShortcutRendersSelectedVariant(): void
+    {
+        $html = Alert::success(
+            'Changes were synced to the preview environment.',
+            title: 'Profile saved',
+            icon: 'check',
+            dismissible: false,
+        );
+
+        $this->assertStringContainsString('alert-success', $html);
+        $this->assertStringContainsString('Profile saved', $html);
+        $this->assertStringContainsString('Changes were synced to the preview environment.', $html);
+        $this->assertStringContainsString('ti-check', $html);
+        $this->assertStringNotContainsString('btn-close', $html);
+    }
+
+    public function testAlertMakeSupportsDynamicTypeSelection(): void
+    {
+        $html = Alert::make(
+            type: 'warning',
+            title: 'Manual review required',
+            body: 'Billing rules changed.',
+            dismissible: false,
+        );
+
+        $this->assertStringContainsString('alert-warning', $html);
+        $this->assertStringContainsString('Manual review required', $html);
+        $this->assertStringContainsString('Billing rules changed.', $html);
+    }
 }

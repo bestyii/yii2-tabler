@@ -20,4 +20,20 @@ class StatusIndicatorTest extends TestCase
         $this->assertStringContainsString('status-indicator-animated', $html);
         $this->assertSame(3, substr_count($html, 'status-indicator-circle'));
     }
+
+    public function testStatusIndicatorShortcutUsesPresetColor(): void
+    {
+        $html = StatusIndicator::green(animated: true);
+
+        $this->assertStringContainsString('status-green', $html);
+        $this->assertStringContainsString('status-indicator-animated', $html);
+    }
+
+    public function testStatusIndicatorMakeSupportsDynamicColorSelection(): void
+    {
+        $html = StatusIndicator::make(color: 'red');
+
+        $this->assertStringContainsString('status-red', $html);
+        $this->assertSame(3, substr_count($html, 'status-indicator-circle'));
+    }
 }

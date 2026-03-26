@@ -8,11 +8,73 @@ use yii\helpers\Html;
 
 class Offcanvas extends Widget
 {
+    public const PLACEMENT_START = 'start';
+    public const PLACEMENT_END = 'end';
+    public const PLACEMENT_TOP = 'top';
+    public const PLACEMENT_BOTTOM = 'bottom';
+
     public ?string $title = null;
     public ?string $body = null;
-    public string $placement = 'end';
+    public string $placement = self::PLACEMENT_END;
     public bool $blur = true;
     public array $options = [];
+
+    // Placement shortcuts stay thin and delegate to make().
+    public static function left(
+        ?string $title = null,
+        ?string $body = null,
+        bool $blur = true,
+        array $options = [],
+    ): string {
+        return static::make(self::PLACEMENT_START, $title, $body, $blur, $options);
+    }
+
+    public static function right(
+        ?string $title = null,
+        ?string $body = null,
+        bool $blur = true,
+        array $options = [],
+    ): string {
+        return static::make(self::PLACEMENT_END, $title, $body, $blur, $options);
+    }
+
+    public static function top(
+        ?string $title = null,
+        ?string $body = null,
+        bool $blur = true,
+        array $options = [],
+    ): string {
+        return static::make(self::PLACEMENT_TOP, $title, $body, $blur, $options);
+    }
+
+    public static function bottom(
+        ?string $title = null,
+        ?string $body = null,
+        bool $blur = true,
+        array $options = [],
+    ): string {
+        return static::make(self::PLACEMENT_BOTTOM, $title, $body, $blur, $options);
+    }
+
+    /**
+     * Typed alternative to widget([...]) for single-call offcanvas rendering.
+     * Use widget() or begin()/end() when the body markup is assembled separately.
+     */
+    public static function make(
+        string $placement = self::PLACEMENT_END,
+        ?string $title = null,
+        ?string $body = null,
+        bool $blur = true,
+        array $options = [],
+    ): string {
+        return static::widget([
+            'title' => $title,
+            'body' => $body,
+            'placement' => $placement,
+            'blur' => $blur,
+            'options' => $options,
+        ]);
+    }
 
     public function init(): void
     {

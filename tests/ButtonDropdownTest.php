@@ -33,4 +33,55 @@ class ButtonDropdownTest extends TestCase
         $this->assertStringContainsString('dropdown-menu', $html);
         $this->assertStringContainsString('Archive', $html);
     }
+
+    public function testButtonDropdownShortcutSupportsSplitOutlineAndDirection(): void
+    {
+        $html = ButtonDropdown::secondary(
+            'Actions',
+            dropdown: [
+                'items' => [
+                    [
+                        'label' => 'Edit',
+                        'url' => '/edit',
+                    ],
+                ],
+            ],
+            direction: ButtonDropdown::DIRECTION_UP,
+            split: true,
+            buttonOptions: [
+                'href' => ['/settings'],
+            ],
+            outline: true,
+            size: 'sm',
+        );
+
+        $this->assertStringContainsString('btn-group dropup', $html);
+        $this->assertStringContainsString('btn-outline-secondary btn-sm', $html);
+        $this->assertStringContainsString('dropdown-toggle-split', $html);
+        $this->assertStringContainsString('href="/index.php?r=settings"', $html);
+    }
+
+    public function testButtonDropdownMakeSupportsDynamicColorAndIcon(): void
+    {
+        $html = ButtonDropdown::make(
+            color: 'warning',
+            label: 'Queue',
+            dropdown: [
+                'items' => [
+                    [
+                        'label' => 'Retry',
+                        'url' => '/retry',
+                    ],
+                ],
+            ],
+            icon: 'settings',
+            direction: ButtonDropdown::DIRECTION_RIGHT,
+            size: 'sm',
+        );
+
+        $this->assertStringContainsString('btn-warning btn-sm', $html);
+        $this->assertStringContainsString('dropend', $html);
+        $this->assertStringContainsString('ti ti-settings', $html);
+        $this->assertStringContainsString('Retry', $html);
+    }
 }

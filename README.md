@@ -78,12 +78,11 @@ composer require bestyii/yii2-tabler
 ```php
 use bestyii\tabler\Button;
 
-echo Button::widget([
-    'label' => 'Open Preview',
-    'icon' => 'eye',
-    'url' => ['/preview'],
-    'color' => 'primary',
-]);
+echo Button::primary(
+    'Open Preview',
+    icon: 'eye',
+    url: ['/preview'],
+);
 ```
 
 ### 2. 渲染一个标准页头
@@ -95,13 +94,37 @@ use bestyii\tabler\PageHeader;
 echo PageHeader::widget([
     'preTitle' => 'Operations',
     'title' => 'Hybrid Validation Board',
-    'content' => Badge::widget([
-        'text' => 'Ready',
-        'color' => 'green',
-        'lite' => true,
-    ]),
+    'content' => Badge::green('Ready', lite: true),
 ]);
 ```
+
+对于高频场景，组件现在提供了更易写的静态 helper，例如 `Badge::secondary('Draft')`、`Button::primary('Save')`、`Alert::success('Done')`、`Progress::success(72, label: '72%')`。底层的 `::widget([...])` API 仍然保留，适合更完整的配置数组。
+
+如果颜色或类型是在业务代码里动态算出来的，可以进一步使用类型化的 `make()`：
+
+```php
+use bestyii\tabler\Badge;
+use bestyii\tabler\Button;
+
+echo Badge::make(color: 'orange', text: 'Review queue', lite: true);
+echo Button::make(color: 'danger', label: 'Delete', outline: true, icon: 'trash');
+```
+
+当前已支持语法糖的组件和预设范围如下：
+
+- `Badge`：`primary`、`secondary`、`success`、`info`、`warning`、`danger`、`blue`、`azure`、`indigo`、`purple`、`pink`、`red`、`orange`、`yellow`、`lime`、`green`、`teal`、`cyan`、`dark`
+- `Button`：`primary`、`secondary`、`success`、`info`、`warning`、`danger`、`blue`、`azure`、`indigo`、`purple`、`pink`、`red`、`orange`、`yellow`、`lime`、`green`、`teal`、`cyan`、`dark`
+- `Alert`：`primary`、`secondary`、`success`、`info`、`warning`、`danger`
+- `Progress`：`primary`、`secondary`、`success`、`info`、`warning`、`danger`、`blue`、`azure`、`indigo`、`purple`、`pink`、`red`、`orange`、`yellow`、`lime`、`green`、`teal`、`cyan`、`dark`
+- `Tag`：`primary`、`secondary`、`success`、`info`、`warning`、`danger`、`blue`、`azure`、`indigo`、`purple`、`pink`、`red`、`orange`、`yellow`、`lime`、`green`、`teal`、`cyan`、`dark`
+- `Status`：`primary`、`secondary`、`success`、`info`、`warning`、`danger`、`blue`、`azure`、`indigo`、`purple`、`pink`、`red`、`orange`、`yellow`、`lime`、`green`、`teal`、`cyan`、`dark`
+- `StatusDot`：`primary`、`secondary`、`success`、`info`、`warning`、`danger`、`blue`、`azure`、`indigo`、`purple`、`pink`、`red`、`orange`、`yellow`、`lime`、`green`、`teal`、`cyan`、`dark`
+- `StatusIndicator`：`primary`、`secondary`、`success`、`info`、`warning`、`danger`、`blue`、`azure`、`indigo`、`purple`、`pink`、`red`、`orange`、`yellow`、`lime`、`green`、`teal`、`cyan`、`dark`
+- `Ribbon`：`primary`、`secondary`、`success`、`info`、`warning`、`danger`、`blue`、`azure`、`indigo`、`purple`、`pink`、`red`、`orange`、`yellow`、`lime`、`green`、`teal`、`cyan`、`dark`
+- `Spinner`：`border`、`grow`
+- `ButtonDropdown`：`primary`、`secondary`、`success`、`info`、`warning`、`danger`、`blue`、`azure`、`indigo`、`purple`、`pink`、`red`、`orange`、`yellow`、`lime`、`green`、`teal`、`cyan`、`dark`
+- `Offcanvas`：`left`、`right`、`top`、`bottom`
+- `Popover`：`auto`、`top`、`bottom`、`left`、`right`
 
 ### 3. 渲染一个后台表格卡片
 

@@ -20,4 +20,21 @@ class StatusDotTest extends TestCase
         $this->assertStringContainsString('bg-green', $html);
         $this->assertStringContainsString('status-dot-animated', $html);
     }
+
+    public function testStatusDotShortcutUsesPresetColor(): void
+    {
+        $html = StatusDot::red(animated: true);
+
+        $this->assertStringContainsString('status-red', $html);
+        $this->assertStringContainsString('bg-red', $html);
+        $this->assertStringContainsString('status-dot-animated', $html);
+    }
+
+    public function testStatusDotMakeSupportsDynamicColorSelection(): void
+    {
+        $html = StatusDot::make(color: 'orange');
+
+        $this->assertStringContainsString('status-orange', $html);
+        $this->assertStringContainsString('bg-orange', $html);
+    }
 }

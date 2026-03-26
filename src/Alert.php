@@ -16,6 +16,73 @@ class Alert extends Widget
     public bool $important = false;
     public array $options = [];
 
+    // Shortcut type methods stay thin and delegate to make().
+    public static function primary(
+        ?string $body = null,
+        ?string $title = null,
+        ?string $icon = null,
+        bool $dismissible = true,
+        bool $important = false,
+        array $options = [],
+    ): string {
+        return static::make('primary', $body, $title, $icon, $dismissible, $important, $options);
+    }
+
+    public static function secondary(
+        ?string $body = null,
+        ?string $title = null,
+        ?string $icon = null,
+        bool $dismissible = true,
+        bool $important = false,
+        array $options = [],
+    ): string {
+        return static::make('secondary', $body, $title, $icon, $dismissible, $important, $options);
+    }
+
+    public static function success(
+        ?string $body = null,
+        ?string $title = null,
+        ?string $icon = null,
+        bool $dismissible = true,
+        bool $important = false,
+        array $options = [],
+    ): string {
+        return static::make('success', $body, $title, $icon, $dismissible, $important, $options);
+    }
+
+    public static function info(
+        ?string $body = null,
+        ?string $title = null,
+        ?string $icon = null,
+        bool $dismissible = true,
+        bool $important = false,
+        array $options = [],
+    ): string {
+        return static::make('info', $body, $title, $icon, $dismissible, $important, $options);
+    }
+
+    public static function warning(
+        ?string $body = null,
+        ?string $title = null,
+        ?string $icon = null,
+        bool $dismissible = true,
+        bool $important = false,
+        array $options = [],
+    ): string {
+        return static::make('warning', $body, $title, $icon, $dismissible, $important, $options);
+    }
+
+    public static function danger(
+        ?string $body = null,
+        ?string $title = null,
+        ?string $icon = null,
+        bool $dismissible = true,
+        bool $important = false,
+        array $options = [],
+    ): string {
+        return static::make('danger', $body, $title, $icon, $dismissible, $important, $options);
+    }
+
     public function init(): void
     {
         parent::init();
@@ -80,5 +147,29 @@ class Alert extends Widget
         }
 
         return Html::tag('div', $content, $this->options);
+    }
+
+    /**
+     * Typed alternative to widget([...]) for single-call alert rendering.
+     * Use widget() or begin()/end() when the body content is assembled separately.
+     */
+    public static function make(
+        string $type,
+        ?string $body = null,
+        ?string $title = null,
+        ?string $icon = null,
+        bool $dismissible = true,
+        bool $important = false,
+        array $options = [],
+    ): string {
+        return static::widget([
+            'title' => $title,
+            'body' => $body,
+            'type' => $type,
+            'icon' => $icon,
+            'dismissible' => $dismissible,
+            'important' => $important,
+            'options' => $options,
+        ]);
     }
 }

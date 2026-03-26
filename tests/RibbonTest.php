@@ -24,4 +24,23 @@ class RibbonTest extends TestCase
         $this->assertStringContainsString('bg-green', $html);
         $this->assertStringContainsString('NEW', $html);
     }
+
+    public function testRibbonShortcutUsesPresetColor(): void
+    {
+        $html = Ribbon::orange('BETA', placement: 'bottom-start');
+
+        $this->assertStringContainsString('bg-orange', $html);
+        $this->assertStringContainsString('ribbon-bottom', $html);
+        $this->assertStringContainsString('ribbon-start', $html);
+        $this->assertStringContainsString('BETA', $html);
+    }
+
+    public function testRibbonMakeSupportsDynamicColorSelection(): void
+    {
+        $html = Ribbon::make(color: 'red', text: 'LIVE', icon: 'bolt');
+
+        $this->assertStringContainsString('bg-red', $html);
+        $this->assertStringContainsString('LIVE', $html);
+        $this->assertStringContainsString('ti-bolt', $html);
+    }
 }

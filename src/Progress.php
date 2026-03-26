@@ -4,10 +4,36 @@ declare(strict_types=1);
 
 namespace bestyii\tabler;
 
+use bestyii\tabler\Concerns\HasPresetStaticCalls;
+use bestyii\tabler\Concerns\HasTablerColorPresetShortcuts;
 use yii\helpers\Html;
 
+/**
+ * @method static string primary(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string secondary(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string success(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string info(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string warning(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string danger(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string blue(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string azure(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string indigo(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string purple(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string pink(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string red(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string orange(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string yellow(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string lime(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string green(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string teal(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string cyan(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ * @method static string dark(float|int $percent, ?string $label = null, ?string $size = null, bool $separated = false, bool $striped = false, bool $animated = false, bool $indeterminate = false, array $options = [], array $barOptions = [])
+ */
 class Progress extends Widget
 {
+    use HasPresetStaticCalls;
+    use HasTablerColorPresetShortcuts;
+
     public float|int $percent = 0;
     public float|int|null $value = null;
     public ?string $label = null;
@@ -93,5 +119,35 @@ class Progress extends Widget
             : '';
 
         return Html::tag('div', $content, $options);
+    }
+
+    /**
+     * Typed alternative to widget([...]) for the single-bar case.
+     * Keep using widget() when you need stacked bars via the bars config.
+     */
+    public static function make(
+        string $color,
+        float|int $percent,
+        ?string $label = null,
+        ?string $size = null,
+        bool $separated = false,
+        bool $striped = false,
+        bool $animated = false,
+        bool $indeterminate = false,
+        array $options = [],
+        array $barOptions = [],
+    ): string {
+        return static::widget([
+            'percent' => $percent,
+            'label' => $label,
+            'color' => $color,
+            'size' => $size,
+            'separated' => $separated,
+            'striped' => $striped,
+            'animated' => $animated,
+            'indeterminate' => $indeterminate,
+            'options' => $options,
+            'barOptions' => $barOptions,
+        ]);
     }
 }

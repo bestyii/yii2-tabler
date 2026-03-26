@@ -4,13 +4,39 @@ declare(strict_types=1);
 
 namespace bestyii\tabler;
 
+use bestyii\tabler\Concerns\HasPresetStaticCalls;
+use bestyii\tabler\Concerns\HasTablerColorPresetShortcuts;
 use bestyii\tabler\assets\TablerAsset;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+/**
+ * @method static string primary(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string secondary(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string success(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string info(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string warning(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string danger(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string blue(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string azure(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string indigo(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string purple(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string pink(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string red(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string orange(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string yellow(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string lime(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string green(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string teal(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string cyan(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ * @method static string dark(?string $label = 'Button', array $dropdown = [], ?string $icon = null, string $direction = self::DIRECTION_DOWN, bool $split = false, array $buttonOptions = [], bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [], string $dropdownClass = 'bestyii\tabler\DropdownMenu', bool $renderContainer = true, string $tagName = 'button')
+ */
 class ButtonDropdown extends Widget
 {
+    use HasPresetStaticCalls;
+    use HasTablerColorPresetShortcuts;
+
     public const DIRECTION_DOWN = 'down';
     public const DIRECTION_LEFT = 'left';
     public const DIRECTION_RIGHT = 'right';
@@ -30,6 +56,44 @@ class ButtonDropdown extends Widget
     public string $color = 'primary';
     public bool $outline = false;
     public ?string $size = null;
+
+    /**
+     * Typed alternative to widget([...]) for the common dropdown-button case.
+     * Prefer named arguments when direction, split mode or menu config is dynamic.
+     */
+    public static function make(
+        string $color,
+        ?string $label = 'Button',
+        array $dropdown = [],
+        ?string $icon = null,
+        string $direction = self::DIRECTION_DOWN,
+        bool $split = false,
+        array $buttonOptions = [],
+        bool $outline = false,
+        ?string $size = null,
+        bool $encodeLabel = true,
+        array $options = [],
+        string $dropdownClass = DropdownMenu::class,
+        bool $renderContainer = true,
+        string $tagName = 'button',
+    ): string {
+        return static::widget([
+            'label' => $label,
+            'icon' => $icon,
+            'options' => $options,
+            'buttonOptions' => $buttonOptions,
+            'dropdown' => $dropdown,
+            'direction' => $direction,
+            'split' => $split,
+            'tagName' => $tagName,
+            'encodeLabel' => $encodeLabel,
+            'dropdownClass' => $dropdownClass,
+            'renderContainer' => $renderContainer,
+            'color' => $color,
+            'outline' => $outline,
+            'size' => $size,
+        ]);
+    }
 
     public function init(): void
     {

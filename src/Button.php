@@ -4,13 +4,39 @@ declare(strict_types=1);
 
 namespace bestyii\tabler;
 
+use bestyii\tabler\Concerns\HasPresetStaticCalls;
+use bestyii\tabler\Concerns\HasTablerColorPresetShortcuts;
 use yii\helpers\Html;
 
+/**
+ * @method static string primary(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string secondary(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string success(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string info(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string warning(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string danger(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string blue(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string azure(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string indigo(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string purple(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string pink(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string red(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string orange(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string yellow(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string lime(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string green(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string teal(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string cyan(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ * @method static string dark(string $label, ?string $icon = null, string|array|null $url = null, bool $outline = false, ?string $size = null, bool $encodeLabel = true, array $options = [])
+ */
 class Button extends Widget
 {
+    use HasPresetStaticCalls;
+    use HasTablerColorPresetShortcuts;
+
     public string $label = 'Button';
     public ?string $icon = null;
-    public ?string $url = null;
+    public string|array|null $url = null;
     public string $color = 'primary';
     public bool $outline = false;
     public ?string $size = null;
@@ -43,5 +69,31 @@ class Button extends Widget
 
         $this->options['type'] ??= 'button';
         return Html::tag('button', $label, $this->options);
+    }
+
+    /**
+     * Typed alternative to widget([...]) for the common single-button case.
+     * Prefer named arguments when the color or route target is assembled dynamically.
+     */
+    public static function make(
+        string $color,
+        string $label,
+        ?string $icon = null,
+        string|array|null $url = null,
+        bool $outline = false,
+        ?string $size = null,
+        bool $encodeLabel = true,
+        array $options = [],
+    ): string {
+        return static::widget([
+            'label' => $label,
+            'icon' => $icon,
+            'url' => $url,
+            'color' => $color,
+            'outline' => $outline,
+            'size' => $size,
+            'encodeLabel' => $encodeLabel,
+            'options' => $options,
+        ]);
     }
 }

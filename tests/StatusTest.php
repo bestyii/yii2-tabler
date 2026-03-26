@@ -20,4 +20,21 @@ class StatusTest extends TestCase
         $this->assertStringContainsString('status-text', $html);
         $this->assertStringContainsString('Ready', $html);
     }
+
+    public function testStatusShortcutUsesPresetColor(): void
+    {
+        $html = Status::green('Ready');
+
+        $this->assertStringContainsString('status-green', $html);
+        $this->assertStringContainsString('status-dot bg-green', $html);
+    }
+
+    public function testStatusMakeSupportsDynamicColorSelection(): void
+    {
+        $html = Status::make(color: 'orange', text: 'Queued', showDot: false);
+
+        $this->assertStringContainsString('status-orange', $html);
+        $this->assertStringContainsString('Queued', $html);
+        $this->assertStringNotContainsString('status-dot', $html);
+    }
 }

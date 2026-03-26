@@ -30,6 +30,86 @@ class Popover extends Widget
     public ?string $content = null;
     public array $clientOptions = [];
 
+    // Placement shortcuts stay thin and delegate to make().
+    public static function auto(
+        ?string $content = null,
+        ?string $title = null,
+        string $trigger = self::TRIGGER_CLICK,
+        array|false $toggleButton = false,
+        array $clientOptions = [],
+        array $options = [],
+    ): ?string {
+        return static::make(self::PLACEMENT_AUTO, $content, $title, $trigger, $toggleButton, $clientOptions, $options);
+    }
+
+    public static function top(
+        ?string $content = null,
+        ?string $title = null,
+        string $trigger = self::TRIGGER_CLICK,
+        array|false $toggleButton = false,
+        array $clientOptions = [],
+        array $options = [],
+    ): ?string {
+        return static::make(self::PLACEMENT_TOP, $content, $title, $trigger, $toggleButton, $clientOptions, $options);
+    }
+
+    public static function bottom(
+        ?string $content = null,
+        ?string $title = null,
+        string $trigger = self::TRIGGER_CLICK,
+        array|false $toggleButton = false,
+        array $clientOptions = [],
+        array $options = [],
+    ): ?string {
+        return static::make(self::PLACEMENT_BOTTOM, $content, $title, $trigger, $toggleButton, $clientOptions, $options);
+    }
+
+    public static function left(
+        ?string $content = null,
+        ?string $title = null,
+        string $trigger = self::TRIGGER_CLICK,
+        array|false $toggleButton = false,
+        array $clientOptions = [],
+        array $options = [],
+    ): ?string {
+        return static::make(self::PLACEMENT_LEFT, $content, $title, $trigger, $toggleButton, $clientOptions, $options);
+    }
+
+    public static function right(
+        ?string $content = null,
+        ?string $title = null,
+        string $trigger = self::TRIGGER_CLICK,
+        array|false $toggleButton = false,
+        array $clientOptions = [],
+        array $options = [],
+    ): ?string {
+        return static::make(self::PLACEMENT_RIGHT, $content, $title, $trigger, $toggleButton, $clientOptions, $options);
+    }
+
+    /**
+     * Typed alternative to widget([...]) for the common single-trigger popover case.
+     * Use widget() or begin()/end() when the content markup is captured separately.
+     */
+    public static function make(
+        string $placement = self::PLACEMENT_AUTO,
+        ?string $content = null,
+        ?string $title = null,
+        string $trigger = self::TRIGGER_CLICK,
+        array|false $toggleButton = false,
+        array $clientOptions = [],
+        array $options = [],
+    ): ?string {
+        return static::widget([
+            'title' => $title,
+            'placement' => $placement,
+            'trigger' => $trigger,
+            'options' => $options,
+            'toggleButton' => $toggleButton,
+            'content' => $content,
+            'clientOptions' => $clientOptions,
+        ]);
+    }
+
     public function init(): void
     {
         parent::init();

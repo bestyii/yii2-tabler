@@ -14,7 +14,56 @@ package: bestyii/yii2-tabler
 
 `bestyii\tabler\Ribbon` renders a positioned ribbon marker that can contain text, an icon, or both.
 
-## Demo
+## Shortcut Methods
+
+```php-demo
+use bestyii\tabler\Ribbon;
+
+echo '<div class="card position-relative"><div class="card-body" style="height: 6rem"></div>'
+    . Ribbon::green('NEW', placement: 'top-end', bookmark: true)
+    . '</div>';
+```
+
+## Available Presets
+
+`Ribbon` currently provides these preset helpers:
+
+- `primary()`
+- `secondary()`
+- `success()`
+- `info()`
+- `warning()`
+- `danger()`
+- `blue()`
+- `azure()`
+- `indigo()`
+- `purple()`
+- `pink()`
+- `red()`
+- `orange()`
+- `yellow()`
+- `lime()`
+- `green()`
+- `teal()`
+- `cyan()`
+- `dark()`
+
+## Typed `make()` API
+
+```php-demo
+use bestyii\tabler\Ribbon;
+
+echo '<div class="card position-relative"><div class="card-body" style="height: 6rem"></div>'
+    . Ribbon::make(
+        color: 'orange',
+        text: 'BETA',
+        placement: 'bottom-start',
+        icon: 'bolt',
+    )
+    . '</div>';
+```
+
+## Full `widget()` API
 
 ```php-demo
 use bestyii\tabler\Ribbon;
@@ -28,3 +77,9 @@ echo '<div class="card position-relative"><div class="card-body" style="height: 
     ])
     . '</div>';
 ```
+
+## Usage Notes
+
+- Shortcut methods are best when the ribbon color is fixed.
+- `make()` gives you named arguments for dynamic color or placement selection.
+- `widget([...])` remains useful when ribbon config is already built as an array.

@@ -20,4 +20,21 @@ class SpinnerTest extends TestCase
         $this->assertStringContainsString('role="status"', $html);
         $this->assertStringContainsString('Loading queue', $html);
     }
+
+    public function testSpinnerShortcutSwitchesType(): void
+    {
+        $html = Spinner::grow(color: 'blue', size: 'sm', label: 'Growing');
+
+        $this->assertStringContainsString('spinner-grow spinner-grow-sm text-blue', $html);
+        $this->assertStringContainsString('Growing', $html);
+    }
+
+    public function testSpinnerMakeSupportsDynamicTypeAndColor(): void
+    {
+        $html = Spinner::make(type: 'grow', color: 'green', label: 'Loading jobs');
+
+        $this->assertStringContainsString('spinner-grow', $html);
+        $this->assertStringContainsString('text-green', $html);
+        $this->assertStringContainsString('Loading jobs', $html);
+    }
 }
