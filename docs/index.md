@@ -19,6 +19,10 @@ This is the local-first docs bootstrap for the package.
 
 [与 yii2-bootstrap5 的对比](compare-with-yii2-bootstrap5)
 
+[组件契约](component-contracts)
+
+## Core Bootstrap Layer
+
 [Button component](components/button)
 
 [ActiveForm component](components/active-form)
@@ -42,6 +46,26 @@ This is the local-first docs bootstrap for the package.
 [ButtonGroup component](components/button-group)
 
 [ButtonToolbar component](components/button-toolbar)
+
+[LinkPager component](components/link-pager)
+
+[Modal component](components/modal)
+
+[Nav component](components/nav)
+
+[NavBar component](components/nav-bar)
+
+[Offcanvas component](components/offcanvas)
+
+[Pagination component](components/pagination)
+
+[Popover component](components/popover)
+
+[Tabs component](components/tabs)
+
+[ToggleButtonGroup component](components/toggle-button-group)
+
+## Product and Layout
 
 [Card component](components/card)
 
@@ -69,29 +93,11 @@ This is the local-first docs bootstrap for the package.
 
 [Icon component](components/icon)
 
-[Offcanvas component](components/offcanvas)
-
 [PageHeader component](components/page-header)
 
 [Payment component](components/payment)
 
-[Progress component](components/progress)
-
-[Range component](components/range)
-
-[Rating component](components/rating)
-
 [Ribbon component](components/ribbon)
-
-[Spinner component](components/spinner)
-
-[Select component](components/select)
-
-[Signature component](components/signature)
-
-[Tabs component](components/tabs)
-
-[Table component](components/table)
 
 [Timeline component](components/timeline)
 
@@ -102,26 +108,6 @@ This is the local-first docs bootstrap for the package.
 [Typed component](components/typed)
 
 [Toast component](components/toast)
-
-[VectorMap component](components/vector-map)
-
-[Wysiwyg component](components/wysiwyg)
-
-[Nav component](components/nav)
-
-[NavSegmented component](components/nav-segmented)
-
-[AdvancedTable component](components/advanced-table)
-
-[Modal component](components/modal)
-
-[NavBar component](components/nav-bar)
-
-[Pagination component](components/pagination)
-
-[LinkPager component](components/link-pager)
-
-[Popover component](components/popover)
 
 [Status component](components/status)
 
@@ -135,7 +121,29 @@ This is the local-first docs bootstrap for the package.
 
 [Tag component](components/tag)
 
-[ToggleButtonGroup component](components/toggle-button-group)
+[NavSegmented component](components/nav-segmented)
+
+## Data and Inputs
+
+[AdvancedTable component](components/advanced-table)
+
+[Progress component](components/progress)
+
+[Range component](components/range)
+
+[Rating component](components/rating)
+
+[Select component](components/select)
+
+[Signature component](components/signature)
+
+[Spinner component](components/spinner)
+
+[Table component](components/table)
+
+[Wysiwyg component](components/wysiwyg)
+
+[VectorMap component](components/vector-map)
 
 ## Validation Pages
 

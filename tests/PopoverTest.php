@@ -10,7 +10,7 @@ use yii\web\View;
 
 class PopoverTest extends TestCase
 {
-    public function testPopoverRegistersBootstrapInitScript(): void
+    public function testPopoverDefaultsToTextContentAndSanitization(): void
     {
         $html = Popover::widget([
             'title' => 'Quick details',
@@ -24,13 +24,15 @@ class PopoverTest extends TestCase
         $this->assertStringContainsString('data-bs-toggle="popover"', $html);
         $this->assertStringContainsString('Inspect', $html);
         $this->assertStringContainsString('bootstrap.Popover', $scripts);
-        $this->assertStringContainsString('Popover body', $scripts);
+        $this->assertStringContainsString('"html":false', $scripts);
+        $this->assertStringContainsString('"sanitize":true', $scripts);
+        $this->assertStringContainsString('\\u003Cstrong\\u003EPopover body\\u003C\\/strong\\u003E', $scripts);
     }
 
-    public function testPopoverShortcutSupportsPlacementAndTrigger(): void
+    public function testPopoverShortcutSupportsExplicitHtmlContent(): void
     {
         $html = Popover::top(
-            content: '<strong>Top body</strong>',
+            contentHtml: '<strong>Top body</strong>',
             title: 'Top details',
             trigger: Popover::TRIGGER_HOVER,
             toggleButton: [
@@ -42,6 +44,8 @@ class PopoverTest extends TestCase
         $this->assertStringContainsString('Hover me', (string) $html);
         $this->assertStringContainsString('data-bs-toggle="popover"', (string) $html);
         $this->assertStringContainsString('Top body', $scripts);
+        $this->assertStringContainsString('"html":true', $scripts);
+        $this->assertStringContainsString('"sanitize":true', $scripts);
         $this->assertStringContainsString('top', $scripts);
         $this->assertStringContainsString('hover', $scripts);
     }
@@ -64,10 +68,22 @@ class PopoverTest extends TestCase
         );
         $scripts = implode("\n", Yii::$app->view->js[View::POS_READY] ?? []);
 
-        $this->assertStringContainsString('href="#details"', (string) $html);
-        $this->assertStringContainsString('Focus me', (string) $html);
+        $this->assertXPathExists('//a[@href="#details" and text()="Focus me"]', (string) $html);
         $this->assertStringContainsString('Focus details', $scripts);
         $this->assertStringContainsString('focus', $scripts);
         $this->assertStringContainsString('popover-wide', $scripts);
+    }
+
+    public function testPopoverEncodesToggleLabelByDefault(): void
+    {
+        $html = Popover::widget([
+            'content' => 'Safe body',
+            'toggleButton' => [
+                'label' => '<strong>Inspect</strong>',
+            ],
+        ]);
+
+        $this->assertStringContainsString('&lt;strong&gt;Inspect&lt;/strong&gt;', $html);
+        $this->assertXPathCount(0, '//button/strong', $html);
     }
 }

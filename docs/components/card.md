@@ -22,8 +22,14 @@ use bestyii\tabler\Card;
 echo Card::widget([
     'title' => 'Revenue',
     'subtitle' => 'Current month',
-    'content' => '<strong class="fs-2">$12,480</strong>',
-    'footer' => 'Updated 2 minutes ago',
+    'contentHtml' => '<strong class="fs-2">$12,480</strong>',
+    'footerHtml' => '<span class="text-secondary">Updated 2 minutes ago</span>',
     'statusColor' => 'green',
 ]);
 ```
+
+## Content Contract
+
+- `title` and `subtitle` are treated as text and escaped.
+- `contentHtml`, `headerHtml` and `footerHtml` are the explicit raw HTML slots for new code.
+- Legacy `content`, `header` and `footer` remain supported for compatibility with older views.

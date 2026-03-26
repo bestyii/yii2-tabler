@@ -25,8 +25,8 @@ echo AdvancedTable::widget([
     'searchPlaceholder' => 'Search backlog',
     'pageSize' => 10,
     'columns' => [
-        ['attribute' => 'owner', 'label' => 'Owner', 'encode' => true],
-        ['attribute' => 'lane', 'label' => 'Lane', 'encode' => true],
+        ['attribute' => 'owner', 'label' => 'Owner', 'format' => AdvancedTable::FORMAT_TEXT],
+        ['attribute' => 'lane', 'label' => 'Lane', 'format' => AdvancedTable::FORMAT_TEXT],
     ],
     'rows' => [
         ['owner' => 'Alice Wong', 'lane' => 'Mirror routing'],
@@ -34,3 +34,10 @@ echo AdvancedTable::widget([
     ],
 ]);
 ```
+
+## Column Contract
+
+- `format` is the primary contract for cell rendering.
+- `AdvancedTable::FORMAT_TEXT` is the default and escapes attribute values, callback results and custom `value`.
+- `AdvancedTable::FORMAT_HTML` should be reserved for trusted HTML or nested widget output.
+- Legacy `encode => true|false` remains supported for compatibility, but new code should use `format`.

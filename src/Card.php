@@ -11,8 +11,11 @@ class Card extends Widget
     public ?string $title = null;
     public ?string $subtitle = null;
     public mixed $content = null;
+    public mixed $contentHtml = null;
     public mixed $header = null;
+    public ?string $headerHtml = null;
     public ?string $footer = null;
+    public ?string $footerHtml = null;
     public array|string|null $tools = null;
     public ?string $statusColor = null;
     public string $statusPosition = 'top';
@@ -65,8 +68,9 @@ class Card extends Widget
             $content[] = $imageBottom;
         }
 
-        if ($this->footer !== null && $this->footer !== '') {
-            $content[] = Html::tag('div', $this->footer, $this->footerOptions);
+        $footer = $this->resolveFooterContent();
+        if ($footer !== '') {
+            $content[] = Html::tag('div', $footer, $this->footerOptions);
         }
 
         return Html::tag('div', implode("\n", $content), $this->options);
@@ -76,8 +80,9 @@ class Card extends Widget
     {
         $body = ob_get_clean();
 
-        if ($this->content !== null) {
-            $body = (is_callable($this->content) ? (string) call_user_func($this->content) : (string) $this->content) . $body;
+        $content = $this->contentHtml ?? $this->content;
+        if ($content !== null) {
+            $body = (is_callable($content) ? (string) call_user_func($content) : (string) $content) . $body;
         }
 
         return $body;
@@ -85,6 +90,10 @@ class Card extends Widget
 
     private function renderHeader(): string
     {
+        if ($this->headerHtml !== null) {
+            return Html::tag('div', $this->headerHtml, $this->headerOptions);
+        }
+
         if ($this->header !== null) {
             return Html::tag('div', (string) $this->header, $this->headerOptions);
         }
@@ -122,6 +131,11 @@ class Card extends Widget
         }
 
         return Html::tag('div', implode("\n", $sections), $this->headerOptions);
+    }
+
+    private function resolveFooterContent(): string
+    {
+        return $this->footerHtml ?? (string) ($this->footer ?? '');
     }
 
     private function renderImage(string $position): string

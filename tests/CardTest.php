@@ -13,8 +13,8 @@ class CardTest extends TestCase
         $html = Card::widget([
             'title' => 'Revenue',
             'subtitle' => 'This month',
-            'content' => '<strong>$12k</strong>',
-            'footer' => 'Updated just now',
+            'contentHtml' => '<strong>$12k</strong>',
+            'footerHtml' => '<span class="text-secondary">Updated just now</span>',
             'statusColor' => 'green',
         ]);
 
@@ -23,6 +23,19 @@ class CardTest extends TestCase
         $this->assertStringContainsString('card-title', $html);
         $this->assertStringContainsString('This month', $html);
         $this->assertStringContainsString('card-body', $html);
-        $this->assertStringContainsString('Updated just now', $html);
+        $this->assertXPathExists('//div[contains(@class, "card-body")]//strong[text()="$12k"]', $html);
+        $this->assertXPathExists('//div[contains(@class, "card-footer")]//span[text()="Updated just now"]', $html);
+    }
+
+    public function testCardStillSupportsLegacyRawContentSlots(): void
+    {
+        $html = Card::widget([
+            'title' => 'Revenue',
+            'content' => '<strong>$12k</strong>',
+            'footer' => '<span>Updated just now</span>',
+        ]);
+
+        $this->assertXPathExists('//div[contains(@class, "card-body")]//strong[text()="$12k"]', $html);
+        $this->assertXPathExists('//div[contains(@class, "card-footer")]//span[text()="Updated just now"]', $html);
     }
 }

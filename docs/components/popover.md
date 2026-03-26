@@ -20,7 +20,7 @@ package: bestyii/yii2-tabler
 use bestyii\tabler\Popover;
 
 echo Popover::top(
-    content: '<strong>Popover body</strong>',
+    contentHtml: '<strong>Popover body</strong>',
     title: 'Quick details',
     trigger: Popover::TRIGGER_HOVER,
     toggleButton: [
@@ -49,7 +49,7 @@ use bestyii\tabler\Popover;
 echo Popover::make(
     placement: Popover::PLACEMENT_RIGHT,
     title: 'Quick details',
-    content: '<strong>Popover body</strong>',
+    contentHtml: '<strong>Popover body</strong>',
     trigger: Popover::TRIGGER_FOCUS,
     toggleButton: [
         'label' => 'Inspect',
@@ -71,7 +71,7 @@ use bestyii\tabler\Popover;
 
 echo Popover::widget([
     'title' => 'Quick details',
-    'content' => '<strong>Popover body</strong>',
+    'contentHtml' => '<strong>Popover body</strong>',
     'placement' => Popover::PLACEMENT_TOP,
     'trigger' => Popover::TRIGGER_CLICK,
     'toggleButton' => [
@@ -90,3 +90,7 @@ echo Popover::widget([
 - Set `toggleButton` to `false` when you only want to register popover behaviour for an existing element with a known ID.
 - `make()` is useful when placement or trigger comes from runtime conditions.
 - `widget([...])` and `begin()/end()` remain the better fit when the content markup is buffered separately.
+- `content` and `title` are treated as text by default.
+- Use `contentHtml` or `titleHtml` only for trusted markup.
+- `sanitize` defaults to `true`; if your HTML relies on unsupported attributes, explicitly opt out and document why.
+- `toggleButton['label']` is encoded by default. Set `encodeLabel => false` only when the trigger label intentionally contains HTML.

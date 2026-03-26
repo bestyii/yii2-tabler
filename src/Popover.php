@@ -12,6 +12,8 @@ use yii\web\View;
 
 class Popover extends Widget
 {
+    public const FORMAT_TEXT = 'text';
+    public const FORMAT_HTML = 'html';
     public const PLACEMENT_AUTO = 'auto';
     public const PLACEMENT_TOP = 'top';
     public const PLACEMENT_BOTTOM = 'bottom';
@@ -23,11 +25,14 @@ class Popover extends Widget
     public const TRIGGER_MANUAL = 'manual';
 
     public ?string $title = null;
+    public ?string $titleHtml = null;
     public string $placement = self::PLACEMENT_AUTO;
     public string $trigger = self::TRIGGER_CLICK;
     public array $options = [];
     public array|false $toggleButton = false;
     public ?string $content = null;
+    public ?string $contentHtml = null;
+    public bool $sanitize = true;
     public array $clientOptions = [];
 
     // Placement shortcuts stay thin and delegate to make().
@@ -38,8 +43,11 @@ class Popover extends Widget
         array|false $toggleButton = false,
         array $clientOptions = [],
         array $options = [],
-    ): ?string {
-        return static::make(self::PLACEMENT_AUTO, $content, $title, $trigger, $toggleButton, $clientOptions, $options);
+        ?string $contentHtml = null,
+        ?string $titleHtml = null,
+        bool $sanitize = true,
+    ): string {
+        return static::make(self::PLACEMENT_AUTO, $content, $title, $trigger, $toggleButton, $clientOptions, $options, $contentHtml, $titleHtml, $sanitize);
     }
 
     public static function top(
@@ -49,8 +57,11 @@ class Popover extends Widget
         array|false $toggleButton = false,
         array $clientOptions = [],
         array $options = [],
-    ): ?string {
-        return static::make(self::PLACEMENT_TOP, $content, $title, $trigger, $toggleButton, $clientOptions, $options);
+        ?string $contentHtml = null,
+        ?string $titleHtml = null,
+        bool $sanitize = true,
+    ): string {
+        return static::make(self::PLACEMENT_TOP, $content, $title, $trigger, $toggleButton, $clientOptions, $options, $contentHtml, $titleHtml, $sanitize);
     }
 
     public static function bottom(
@@ -60,8 +71,11 @@ class Popover extends Widget
         array|false $toggleButton = false,
         array $clientOptions = [],
         array $options = [],
-    ): ?string {
-        return static::make(self::PLACEMENT_BOTTOM, $content, $title, $trigger, $toggleButton, $clientOptions, $options);
+        ?string $contentHtml = null,
+        ?string $titleHtml = null,
+        bool $sanitize = true,
+    ): string {
+        return static::make(self::PLACEMENT_BOTTOM, $content, $title, $trigger, $toggleButton, $clientOptions, $options, $contentHtml, $titleHtml, $sanitize);
     }
 
     public static function left(
@@ -71,8 +85,11 @@ class Popover extends Widget
         array|false $toggleButton = false,
         array $clientOptions = [],
         array $options = [],
-    ): ?string {
-        return static::make(self::PLACEMENT_LEFT, $content, $title, $trigger, $toggleButton, $clientOptions, $options);
+        ?string $contentHtml = null,
+        ?string $titleHtml = null,
+        bool $sanitize = true,
+    ): string {
+        return static::make(self::PLACEMENT_LEFT, $content, $title, $trigger, $toggleButton, $clientOptions, $options, $contentHtml, $titleHtml, $sanitize);
     }
 
     public static function right(
@@ -82,8 +99,11 @@ class Popover extends Widget
         array|false $toggleButton = false,
         array $clientOptions = [],
         array $options = [],
-    ): ?string {
-        return static::make(self::PLACEMENT_RIGHT, $content, $title, $trigger, $toggleButton, $clientOptions, $options);
+        ?string $contentHtml = null,
+        ?string $titleHtml = null,
+        bool $sanitize = true,
+    ): string {
+        return static::make(self::PLACEMENT_RIGHT, $content, $title, $trigger, $toggleButton, $clientOptions, $options, $contentHtml, $titleHtml, $sanitize);
     }
 
     /**
@@ -98,14 +118,20 @@ class Popover extends Widget
         array|false $toggleButton = false,
         array $clientOptions = [],
         array $options = [],
-    ): ?string {
+        ?string $contentHtml = null,
+        ?string $titleHtml = null,
+        bool $sanitize = true,
+    ): string {
         return static::widget([
             'title' => $title,
+            'titleHtml' => $titleHtml,
             'placement' => $placement,
             'trigger' => $trigger,
             'options' => $options,
             'toggleButton' => $toggleButton,
             'content' => $content,
+            'contentHtml' => $contentHtml,
+            'sanitize' => $sanitize,
             'clientOptions' => $clientOptions,
         ]);
     }
@@ -119,27 +145,38 @@ class Popover extends Widget
         ob_implicit_flush(false);
     }
 
-    public function run(): ?string
+    public function run(): string
     {
-        $content = trim((string) ob_get_clean());
-        if ($content === '' && $this->content !== null) {
-            $content = $this->content;
+        $bufferedContent = trim((string) ob_get_clean());
+        $content = $this->resolveContentPayload($bufferedContent);
+        $title = $this->resolveTitlePayload();
+        $usesHtml = $title['html'] || $content['html'];
+
+        if ($usesHtml && !$title['html'] && $title['value'] !== null) {
+            $title['value'] = Html::encode($title['value']);
+        }
+        if ($usesHtml && !$content['html'] && $content['value'] !== null) {
+            $content['value'] = Html::encode($content['value']);
         }
 
-        $this->registerPopover($content);
+        $this->registerPopover($title['value'], $content['value'], $usesHtml);
 
         return $this->renderToggleButton();
     }
 
-    protected function renderToggleButton(): ?string
+    protected function renderToggleButton(): string
     {
         if ($this->toggleButton === false) {
-            return null;
+            return '';
         }
 
         $toggleButton = $this->toggleButton;
         $tag = ArrayHelper::remove($toggleButton, 'tag', 'button');
         $label = (string) ArrayHelper::remove($toggleButton, 'label', 'Show');
+        $encodeLabel = (bool) ArrayHelper::remove($toggleButton, 'encodeLabel', true);
+        if ($encodeLabel) {
+            $label = Html::encode($label);
+        }
         Html::addCssClass($toggleButton, ['btn', 'btn-secondary']);
         $toggleButton['id'] = $this->options['id'];
         $toggleButton['data-bs-toggle'] = 'popover';
@@ -155,19 +192,23 @@ class Popover extends Widget
         return Html::tag($tag, $label, $toggleButton);
     }
 
-    private function registerPopover(string $content): void
+    private function registerPopover(?string $title, ?string $content, bool $usesHtml): void
     {
         $options = array_merge([
-            'html' => true,
+            'html' => false,
             'placement' => $this->placement,
             'trigger' => $this->trigger,
-            'sanitize' => false,
+            'sanitize' => $this->sanitize,
         ], $this->clientOptions);
 
-        if ($this->title !== null && !array_key_exists('title', $options)) {
-            $options['title'] = $this->title;
+        if ($usesHtml) {
+            $options['html'] = true;
         }
-        if ($content !== '' && !array_key_exists('content', $options)) {
+
+        if ($title !== null && !array_key_exists('title', $options)) {
+            $options['title'] = $title;
+        }
+        if ($content !== null && $content !== '' && !array_key_exists('content', $options)) {
             $options['content'] = $content;
         }
 
@@ -185,5 +226,48 @@ class Popover extends Widget
 JS;
 
         $this->getView()->registerJs($script, View::POS_READY);
+    }
+
+    /**
+     * @return array{value: ?string, html: bool}
+     */
+    private function resolveContentPayload(string $bufferedContent): array
+    {
+        if ($bufferedContent !== '') {
+            return [
+                'value' => $bufferedContent,
+                'html' => true,
+            ];
+        }
+
+        if ($this->contentHtml !== null) {
+            return [
+                'value' => $this->contentHtml,
+                'html' => true,
+            ];
+        }
+
+        return [
+            'value' => $this->content,
+            'html' => false,
+        ];
+    }
+
+    /**
+     * @return array{value: ?string, html: bool}
+     */
+    private function resolveTitlePayload(): array
+    {
+        if ($this->titleHtml !== null) {
+            return [
+                'value' => $this->titleHtml,
+                'html' => true,
+            ];
+        }
+
+        return [
+            'value' => $this->title,
+            'html' => false,
+        ];
     }
 }

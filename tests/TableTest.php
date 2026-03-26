@@ -36,7 +36,47 @@ class TableTest extends TestCase
 
         $this->assertStringContainsString('table-responsive', $html);
         $this->assertStringContainsString('table table-vcenter table-striped card-table', $html);
-        $this->assertStringContainsString('<th scope="row">Alice</th>', $html);
-        $this->assertStringContainsString('<td>Ready</td>', $html);
+        $this->assertXPathExists('//th[@scope="row" and text()="Alice"]', $html);
+        $this->assertXPathExists('//td[text()="Ready"]', $html);
+    }
+
+    public function testTableDefaultsToSafeTextFormat(): void
+    {
+        $html = Table::widget([
+            'rows' => [
+                [
+                    'owner' => '<script>alert(1)</script>',
+                ],
+            ],
+            'columns' => [
+                [
+                    'attribute' => 'owner',
+                    'label' => 'Owner',
+                ],
+            ],
+        ]);
+
+        $this->assertStringContainsString('&lt;script&gt;alert(1)&lt;/script&gt;', $html);
+        $this->assertXPathCount(0, '//script', $html);
+    }
+
+    public function testTableSupportsExplicitHtmlFormat(): void
+    {
+        $html = Table::widget([
+            'rows' => [
+                [
+                    'status' => 'Ready',
+                ],
+            ],
+            'columns' => [
+                [
+                    'label' => 'Status',
+                    'content' => static fn(array $row): string => '<strong>' . $row['status'] . '</strong>',
+                    'format' => Table::FORMAT_HTML,
+                ],
+            ],
+        ]);
+
+        $this->assertXPathExists('//td/strong[text()="Ready"]', $html);
     }
 }

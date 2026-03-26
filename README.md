@@ -19,10 +19,9 @@
 基于当前仓库快照，这个包已经提供：
 
 - 62 个顶层类，覆盖 Bootstrap 常用组件、Tabler 后台组件和表单基座。
-- 26 个 Asset Bundle，用于统一管理 Tabler 及其配套前端依赖。
+- 27 个 Asset Bundle，用于统一管理 Tabler 及其配套前端依赖。
 - 59 篇组件文档，位于 `docs/components`。
-- 63 个 PHPUnit 用例，覆盖 469 条断言。
-- 可执行的 `phpunit`、`phpstan`、`ecs` 三条包级质量门禁。
+- 包级 `phpunit`、`phpstan`、`ecs` 三条质量门禁。
 
 代表性组件包括：
 
@@ -137,8 +136,8 @@ echo AdvancedTable::widget([
     'searchPlaceholder' => 'Search backlog',
     'pageSize' => 10,
     'columns' => [
-        ['attribute' => 'owner', 'label' => 'Owner', 'encode' => true],
-        ['attribute' => 'lane', 'label' => 'Lane', 'encode' => true],
+        ['attribute' => 'owner', 'label' => 'Owner', 'format' => AdvancedTable::FORMAT_TEXT],
+        ['attribute' => 'lane', 'label' => 'Lane', 'format' => AdvancedTable::FORMAT_TEXT],
     ],
     'rows' => [
         ['owner' => 'Alice Wong', 'lane' => 'Mirror routing'],
@@ -146,6 +145,17 @@ echo AdvancedTable::widget([
     ],
 ]);
 ```
+
+## 组件契约
+
+为了让组件在复杂后台页面里可长期维护，这个包现在遵循一套统一内容契约：
+
+- 文本属性默认安全。像 `title`、`label`、`subtitle` 这类字段，默认按文本处理。
+- 原始 HTML 要显式表达。新代码优先使用 `contentHtml`、`headerHtml`、`footerHtml` 这类命名，而不是模糊地把 HTML 放进普通字符串属性。
+- 列表和表格用 `format` 明确语义。`Table` 与 `AdvancedTable` 的列配置优先使用 `format => Table::FORMAT_TEXT|FORMAT_HTML`，旧的 `encode` 仅作为兼容桥保留。
+- 缓冲式 `begin()/end()` 输出视为 HTML 插槽，因为这类用法本身就是为了拼接 widget 或标记。
+
+详细约定见 [`docs/component-contracts.md`](docs/component-contracts.md)。
 
 ## 资源策略
 
@@ -186,8 +196,11 @@ echo AdvancedTable::widget([
 ## 文档入口
 
 - 包级文档索引：[`docs/index.md`](docs/index.md)
+- 组件契约：[`docs/component-contracts.md`](docs/component-contracts.md)
 - 组件文档目录：[`docs/components`](docs/components)
 - 选型参考：[`docs/compare-with-yii2-bootstrap5.md`](docs/compare-with-yii2-bootstrap5.md)
+- 贡献说明：[`CONTRIBUTING.md`](CONTRIBUTING.md)
+- 安全说明：[`SECURITY.md`](SECURITY.md)
 
 ## 选型结论
 

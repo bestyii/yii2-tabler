@@ -29,8 +29,7 @@ package: bestyii/yii2-tabler
 | 顶层类 | 62 |
 | Asset Bundle | 27 |
 | 组件文档 | 59 |
-| PHPUnit 用例 | 63 |
-| Assertions | 469 |
+| 质量门禁 | PHPUnit / PHPStan / ECS |
 
 ## 核心用户态组件覆盖
 

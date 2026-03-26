@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace bestyii\tabler\tests;
 
+use DOMDocument;
+use DOMXPath;
 use Yii;
 use yii\di\Container;
 use yii\helpers\ArrayHelper;
@@ -52,5 +54,30 @@ class TestCase extends \PHPUnit\Framework\TestCase
                 ],
             ],
         ], $config));
+    }
+
+    protected function createHtmlXPath(string $html): DOMXPath
+    {
+        $previous = libxml_use_internal_errors(true);
+
+        $document = new DOMDocument('1.0', 'UTF-8');
+        $document->loadHTML('<?xml encoding="utf-8" ?><body>' . $html . '</body>');
+
+        libxml_clear_errors();
+        libxml_use_internal_errors($previous);
+
+        return new DOMXPath($document);
+    }
+
+    protected function assertXPathCount(int $expectedCount, string $expression, string $html): void
+    {
+        $nodes = $this->createHtmlXPath($html)->query($expression);
+        self::assertNotFalse($nodes, sprintf('Invalid XPath expression: %s', $expression));
+        self::assertCount($expectedCount, $nodes);
+    }
+
+    protected function assertXPathExists(string $expression, string $html): void
+    {
+        $this->assertXPathCount(1, $expression, $html);
     }
 }

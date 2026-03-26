@@ -10,7 +10,17 @@ use yii\helpers\Inflector;
 
 class Table extends Widget
 {
+    public const FORMAT_TEXT = 'text';
+    public const FORMAT_HTML = 'html';
+
+    /**
+     * @var array<int, array<string, mixed>>
+     */
     public array $columns = [];
+
+    /**
+     * @var array<int, mixed>
+     */
     public array $rows = [];
     public bool $responsive = true;
     public ?string $responsiveClass = 'table-responsive';
@@ -150,7 +160,10 @@ class Table extends Widget
 
         $value = $value === null ? '' : (string) $value;
 
-        return !empty($column['encode']) ? Html::encode($value) : $value;
+        return match ($this->resolveCellFormat($column)) {
+            self::FORMAT_HTML => $value,
+            default => Html::encode($value),
+        };
     }
 
     private function resolveCellOptions(array $column, mixed $row, int $index): array
@@ -171,5 +184,20 @@ class Table extends Widget
         }
 
         return (array) $options;
+    }
+
+    private function resolveCellFormat(array $column): string
+    {
+        $format = $column['format'] ?? null;
+        if (is_string($format)) {
+            $format = strtolower($format);
+        }
+
+        return match (true) {
+            $format === self::FORMAT_HTML || $format === 'raw' => self::FORMAT_HTML,
+            $format === self::FORMAT_TEXT => self::FORMAT_TEXT,
+            array_key_exists('encode', $column) => !empty($column['encode']) ? self::FORMAT_TEXT : self::FORMAT_HTML,
+            default => self::FORMAT_TEXT,
+        };
     }
 }
