@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.0.1 - 2026-03-26
+
 - Lowered the package support floor to PHP 8.2 and aligned CI around 8.2, 8.3 and 8.4.
 - Enabled PHPUnit coverage metadata and added a dedicated CI coverage artifact job plus a README CI badge.
 - Added support policy, parity policy and a 1.0 roadmap to document compatibility and release expectations.
