@@ -184,6 +184,8 @@ TablerSocialsAsset::register($this);
 TablerThemeAsset::register($this);
 ```
 
+如果主题切换器是应用级能力，而不是单个 widget 的局部交互，优先在 layout 里注册 `TablerThemeAsset`；像社交图标这类页面级 class，则只在实际使用该 class 的视图里注册对应资源。
+
 `TablerExtrasAsset` 仍然保留为兼容聚合包，但新代码应优先注册最小匹配的资源，而不是一次性加载全部 extras。
 
 这让项目可以在保留 Yii2 视图体系的同时，把前端插件接入成本控制在组件包内部。
