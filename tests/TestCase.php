@@ -32,12 +32,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function mockWebApplication(array $config = []): void
     {
-        FileHelper::createDirectory(dirname(__DIR__, 4) . '/runtime/assets');
+        FileHelper::createDirectory($this->assetRuntimePath());
 
         new \yii\web\Application(ArrayHelper::merge([
             'id' => 'tabler-test',
-            'basePath' => dirname(__DIR__),
-            'vendorPath' => dirname(__DIR__, 4) . '/vendor',
+            'basePath' => $this->packageRoot(),
+            'vendorPath' => $this->packageRoot() . '/vendor',
             'aliases' => [
                 '@bower' => '@vendor/bower-asset',
                 '@npm' => '@vendor/npm-asset',
@@ -49,11 +49,21 @@ class TestCase extends \PHPUnit\Framework\TestCase
                     'scriptUrl' => '/index.php',
                 ],
                 'assetManager' => [
-                    'basePath' => dirname(__DIR__, 4) . '/runtime/assets',
+                    'basePath' => $this->assetRuntimePath(),
                     'baseUrl' => '/assets',
                 ],
             ],
         ], $config));
+    }
+
+    protected function packageRoot(): string
+    {
+        return Yii::getAlias('@bestyii/tabler/root');
+    }
+
+    protected function assetRuntimePath(): string
+    {
+        return $this->packageRoot() . '/tests/runtime/assets';
     }
 
     protected function createHtmlXPath(string $html): DOMXPath
