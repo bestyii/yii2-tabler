@@ -24,3 +24,8 @@ echo Payment::widget([
     'size' => 'sm',
 ]);
 ```
+
+## Asset Ownership
+
+- `Payment` automatically registers `bestyii\tabler\assets\TablerPaymentsAsset`.
+- If you render raw `payment` / `payment-provider-*` classes outside the widget, register `TablerPaymentsAsset` explicitly in the view.

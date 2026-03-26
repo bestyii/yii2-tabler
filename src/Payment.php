@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace bestyii\tabler;
 
+use bestyii\tabler\assets\TablerPaymentsAsset;
 use yii\helpers\Html;
 
 class Payment extends Widget
@@ -12,6 +13,12 @@ class Payment extends Widget
     public ?string $size = null;
     public bool $dark = false;
     public array $options = [];
+
+    public function init(): void
+    {
+        parent::init();
+        TablerPaymentsAsset::register($this->getView());
+    }
 
     public function run(): string
     {

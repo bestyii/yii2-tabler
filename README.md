@@ -165,6 +165,27 @@ echo AdvancedTable::widget([
 - 插件组件各自依赖对应 Asset Bundle，例如 `ApexChartsAsset`、`DropzoneAsset`、`FullcalendarAsset`
 - 包内统一处理资源路径、发布行为和依赖声明，业务应用只关心 Widget 调用
 
+扩展资源现在按最小边界拆分：
+
+- `Flag` 会自动注册 `TablerFlagsAsset`
+- `Payment` 会自动注册 `TablerPaymentsAsset`
+- 如果你直接在页面里使用原始 Tabler 扩展 class，而不是通过 widget 输出，请显式注册对应资源包：
+  - `TablerSocialsAsset`
+  - `TablerMarketingAsset`
+  - `TablerThemeAsset`
+
+例如：
+
+```php
+use bestyii\tabler\assets\TablerSocialsAsset;
+use bestyii\tabler\assets\TablerThemeAsset;
+
+TablerSocialsAsset::register($this);
+TablerThemeAsset::register($this);
+```
+
+`TablerExtrasAsset` 仍然保留为兼容聚合包，但新代码应优先注册最小匹配的资源，而不是一次性加载全部 extras。
+
 这让项目可以在保留 Yii2 视图体系的同时，把前端插件接入成本控制在组件包内部。
 
 ## 产品目标

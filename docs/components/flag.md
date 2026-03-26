@@ -24,3 +24,8 @@ echo Flag::widget([
     'size' => 'sm',
 ]);
 ```
+
+## Asset Ownership
+
+- `Flag` automatically registers `bestyii\tabler\assets\TablerFlagsAsset`.
+- If you render raw `flag` / `flag-country-*` classes outside the widget, register `TablerFlagsAsset` explicitly in the view.

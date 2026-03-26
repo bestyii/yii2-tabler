@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace bestyii\tabler;
 
+use bestyii\tabler\assets\TablerFlagsAsset;
 use yii\helpers\Html;
 
 class Flag extends Widget
@@ -11,6 +12,12 @@ class Flag extends Widget
     public string $country = 'pl';
     public ?string $size = null;
     public array $options = [];
+
+    public function init(): void
+    {
+        parent::init();
+        TablerFlagsAsset::register($this->getView());
+    }
 
     public function run(): string
     {

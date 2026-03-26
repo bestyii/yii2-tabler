@@ -24,6 +24,12 @@ package: bestyii/yii2-tabler
 - If a component exposes a raw HTML slot, the documentation must say so explicitly.
 - If JavaScript widgets allow HTML rendering, sanitization should default to the safer path unless the component documentation explains why not.
 
+## Asset Ownership Rules
+
+- Widget-owned visuals should self-register the smallest asset bundle they need.
+- Page-level decorative or marketing assets should be registered explicitly by the page when no dedicated widget owns them.
+- Compatibility aggregate bundles may remain, but new code should prefer the narrowest matching asset.
+
 ## Documentation Rules
 
 - Every component page must explain which properties are text and which are HTML.
