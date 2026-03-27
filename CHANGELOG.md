@@ -1,6 +1,9 @@
 # Changelog
 
-## Unreleased
+## 0.0.2 - 2026-03-27
+
+- Added `Html` helper with `div()` and `span()` methods to simplify HTML generation.
+- Added unit tests for the new `Html` helper.
 
 ## 0.0.1 - 2026-03-26
 
